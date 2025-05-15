@@ -80,7 +80,7 @@ For the former question type to be effective, the two options provided must be _
 Here is a picture of a murder hornet to illustrate how horrible they are, compared to a regular western honeybee.  
 
   
-![](https://www.bellinghamherald.com/latest-news/ab3it/picture242408291/alternates/FREE_1140/Asian%20hornet.jpg)
+![](https://www.bellinghamherald.com/latest-news/ab3it/picture242408291/alternates/FREE_1140/Asian%20hornet.jpg)    
 
   
 Nor should options be neutral. Your audience must be moved emotionally or rationally enough to want to answer the question.  
@@ -110,7 +110,7 @@ Ultimately, this is an MVP. There's much room for improvement, which I might do 
 
 # Our Audience  
 **End Users:**  
-Matt, Eric, and/or Argo, for whom I made this as a teacher appreciation gift.  
+Matt, Eric, and Argo, for whom I made this as a teacher appreciation gift.  
 This program could also be useful for:  
 
 - People managers
