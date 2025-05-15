@@ -77,11 +77,9 @@ For the former question type to be effective, the two options provided must be _
 
 > "Would you rather be stung by a murder hornet, or win a million dollars tax free?"  
 
-Here is a picture of a murder hornet to illustrate how horrible they are, compared to a regular western honeybee.  
-
+Here is a picture of a murder hornet to illustrate how horrible they are, compared to a hornet common in D.C.  
   
-![](https://www.bellinghamherald.com/latest-news/ab3it/picture242408291/alternates/FREE_1140/Asian%20hornet.jpg)    
-
+![]([https://www.bellinghamherald.com/latest-news/ab3it/picture242408291/alternates/FREE_1140/Asian%20hornet.jpg](https://media.nbcwashington.com/2019/09/murder-hornets-01.jpg?fit=1024%2C576))
   
 Nor should options be neutral. Your audience must be moved emotionally or rationally enough to want to answer the question.  
   
