@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- Simple US flag - rectangular version -->
+  <rect width="300" height="200" fill="#FFFFFF"/>
+  <rect y="0" width="300" height="15.38" fill="#B22234"/>
+  <rect y="30.76" width="300" height="15.38" fill="#B22234"/>
+  <rect y="61.52" width="300" height="15.38" fill="#B22234"/>
+  <rect y="92.28" width="300" height="15.38" fill="#B22234"/>
+  <rect y="123.04" width="300" height="15.38" fill="#B22234"/>
+  <rect y="153.8" width="300" height="15.38" fill="#B22234"/>
+  <rect y="184.56" width="300" height="15.38" fill="#B22234"/>
+  <rect width="120" height="107.66" fill="#3C3B6E"/>
+  <g fill="#FFFFFF">
+    <circle cx="15" cy="13.46" r="4.5"/>
+    <circle cx="45" cy="13.46" r="4.5"/>
+    <circle cx="75" cy="13.46" r="4.5"/>
+    <circle cx="105" cy="13.46" r="4.5"/>
+    <circle cx="30" cy="29.5" r="4.5"/>
+    <circle cx="60" cy="29.5" r="4.5"/>
+    <circle cx="90" cy="29.5" r="4.5"/>
+    <circle cx="15" cy="45.55" r="4.5"/>
+    <circle cx="45" cy="45.55" r="4.5"/>
+    <circle cx="75" cy="45.55" r="4.5"/>
+    <circle cx="105" cy="45.55" r="4.5"/>
+    <circle cx="30" cy="61.59" r="4.5"/>
+    <circle cx="60" cy="61.59" r="4.5"/>
+    <circle cx="90" cy="61.59" r="4.5"/>
+    <circle cx="15" cy="77.63" r="4.5"/>
+    <circle cx="45" cy="77.63" r="4.5"/>
+    <circle cx="75" cy="77.63" r="4.5"/>
+    <circle cx="105" cy="77.63" r="4.5"/>
+    <circle cx="30" cy="93.67" r="4.5"/>
+    <circle cx="60" cy="93.67" r="4.5"/>
+    <circle cx="90" cy="93.67" r="4.5"/>
+  </g>
+</svg>

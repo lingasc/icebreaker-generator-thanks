@@ -1,134 +1,120 @@
-// Time-based color transitions and effects
-document.addEventListener('DOMContentLoaded', function() {
-    /**
-     * Determines the current time of day
-     * @returns {string} - The current time period (dawn, morning, afternoon, evening, or night)
-     */
-    function getCurrentTimePeriod() {
-        const hour = new Date().getHours();
+// Time-of-day based color transitions and greeting
+document.addEventListener('DOMContentLoaded', () => {
+  // Get greeting element
+  const greeting = document.querySelector('.header p');
+  
+  // Initialize
+  initTimeBasedColors();
+  
+  // Function to get current time period
+  function getCurrentTimePeriod() {
+    const hour = new Date().getHours();
+    
+    if (hour >= 5 && hour < 8) {
+      return 'dawn';
+    } else if (hour >= 8 && hour < 12) {
+      return 'morning';
+    } else if (hour >= 12 && hour < 17) {
+      return 'afternoon';
+    } else if (hour >= 17 && hour < 21) {
+      return 'evening';
+    } else {
+      return 'night';
+    }
+  }
+  
+  // Update CSS variables based on time of day
+  function updateTimeBasedColors(timePeriod) {
+    const root = document.documentElement;
+    
+    // Update body class for specific filters
+    document.body.classList.remove('time-dawn', 'time-morning', 'time-afternoon', 'time-evening', 'time-night');
+    document.body.classList.add(`time-${timePeriod}`);
+    
+    // Set variables based on time period
+    switch (timePeriod) {
+      case 'dawn':
+        root.style.setProperty('--time-primary', '#e7b7ff');
+        root.style.setProperty('--time-secondary', '#ffb7e5');
+        root.style.setProperty('--time-accent', '#ffd8be');
+        root.style.setProperty('--time-highlight', '#fff1c5');
+        root.style.setProperty('--time-bg-gradient', 'linear-gradient(to bottom, rgba(231, 183, 255, 0.2), rgba(255, 183, 229, 0.15), rgba(255, 216, 190, 0.1))');
+        break;
         
-        if (hour >= 5 && hour < 8) {
-            return 'dawn';
-        } else if (hour >= 8 && hour < 12) {
-            return 'morning';
-        } else if (hour >= 12 && hour < 17) {
-            return 'afternoon';
-        } else if (hour >= 17 && hour < 20) {
-            return 'evening';
-        } else {
-            return 'night';
-        }
+      case 'morning':
+        root.style.setProperty('--time-primary', '#f47b7b');
+        root.style.setProperty('--time-secondary', '#f49e6e');
+        root.style.setProperty('--time-accent', '#ffd15c');
+        root.style.setProperty('--time-highlight', '#fff27c');
+        root.style.setProperty('--time-bg-gradient', 'linear-gradient(to bottom, rgba(244, 123, 123, 0.2), rgba(244, 158, 110, 0.15), rgba(255, 209, 92, 0.1))');
+        break;
+        
+      case 'afternoon':
+        root.style.setProperty('--time-primary', '#64b3f4');
+        root.style.setProperty('--time-secondary', '#74ccf4');
+        root.style.setProperty('--time-accent', '#5eead4');
+        root.style.setProperty('--time-highlight', '#98f5e1');
+        root.style.setProperty('--time-bg-gradient', 'linear-gradient(to bottom, rgba(100, 179, 244, 0.2), rgba(116, 204, 244, 0.15), rgba(94, 234, 212, 0.1))');
+        break;
+        
+      case 'evening':
+        root.style.setProperty('--time-primary', '#ff7e5f');
+        root.style.setProperty('--time-secondary', '#feb47b');
+        root.style.setProperty('--time-accent', '#ffcf96');
+        root.style.setProperty('--time-highlight', '#f2e5bc');
+        root.style.setProperty('--time-bg-gradient', 'linear-gradient(to bottom, rgba(255, 126, 95, 0.2), rgba(254, 180, 123, 0.15), rgba(255, 207, 150, 0.1))');
+        break;
+        
+      case 'night':
+        root.style.setProperty('--time-primary', '#4b6cb7');
+        root.style.setProperty('--time-secondary', '#182848');
+        root.style.setProperty('--time-accent', '#7b8aad');
+        root.style.setProperty('--time-highlight', '#a9c1f5');
+        root.style.setProperty('--time-bg-gradient', 'linear-gradient(to bottom, rgba(75, 108, 183, 0.2), rgba(24, 40, 72, 0.15), rgba(123, 138, 173, 0.1))');
+        break;
+    }
+  }
+  
+  // Update greeting based on time of day
+  function updateTimeOfDaySubtitle(timePeriod) {
+    let timeGreeting = '';
+    
+    switch (timePeriod) {
+      case 'dawn':
+        timeGreeting = 'Good morning!';
+        break;
+      case 'morning':
+        timeGreeting = 'Good morning!';
+        break;
+      case 'afternoon':
+        timeGreeting = 'Good afternoon!';
+        break;
+      case 'evening':
+        timeGreeting = 'Good evening!';
+        break;
+      case 'night':
+        timeGreeting = 'Good evening!';
+        break;
     }
     
-    /**
-     * Updates CSS variables based on the current time of day
-     * Make this globally accessible for dark mode toggle
-     */
-    window.updateTimeBasedColors = function() {
-        const body = document.body;
-        const timePeriod = getCurrentTimePeriod();
-        
-        // Remove all time-based classes
-        body.classList.remove('time-dawn', 'time-morning', 'time-afternoon', 'time-evening', 'time-night');
-        
-        // Add the appropriate class
-        body.classList.add(`time-${timePeriod}`);
-        
-        // Update the :root variables based on time
-        switch(timePeriod) {
-            case 'dawn':
-                document.documentElement.style.setProperty('--time-primary', '#8a6dc9');
-                document.documentElement.style.setProperty('--time-secondary', '#c182b5');
-                document.documentElement.style.setProperty('--time-accent', '#ffcce6');
-                document.documentElement.style.setProperty('--time-highlight', '#ffebf5');
-                document.documentElement.style.setProperty('--time-bg-gradient', 
-                    'linear-gradient(to bottom, rgba(138, 109, 201, 0.2), rgba(193, 130, 181, 0.15), rgba(255, 204, 230, 0.1))');
-                break;
-            case 'morning':
-                document.documentElement.style.setProperty('--time-primary', '#f47b7b');
-                document.documentElement.style.setProperty('--time-secondary', '#f49e6e');
-                document.documentElement.style.setProperty('--time-accent', '#ffd15c');
-                document.documentElement.style.setProperty('--time-highlight', '#fff27c');
-                document.documentElement.style.setProperty('--time-bg-gradient', 
-                    'linear-gradient(to bottom, rgba(244, 123, 123, 0.2), rgba(244, 158, 110, 0.15), rgba(255, 209, 92, 0.1))');
-                break;
-            case 'afternoon':
-                document.documentElement.style.setProperty('--time-primary', '#64b3f4');
-                document.documentElement.style.setProperty('--time-secondary', '#6ab7e2');
-                document.documentElement.style.setProperty('--time-accent', '#c2e9fb');
-                document.documentElement.style.setProperty('--time-highlight', '#f0f9ff');
-                document.documentElement.style.setProperty('--time-bg-gradient', 
-                    'linear-gradient(to bottom, rgba(100, 179, 244, 0.2), rgba(106, 183, 226, 0.15), rgba(194, 233, 251, 0.1))');
-                break;
-            case 'evening':
-                document.documentElement.style.setProperty('--time-primary', '#f55c41');
-                document.documentElement.style.setProperty('--time-secondary', '#f6734b');
-                document.documentElement.style.setProperty('--time-accent', '#f5af19');
-                document.documentElement.style.setProperty('--time-highlight', '#ffebb8');
-                document.documentElement.style.setProperty('--time-bg-gradient', 
-                    'linear-gradient(to bottom, rgba(245, 92, 65, 0.2), rgba(246, 115, 75, 0.15), rgba(245, 175, 25, 0.1))');
-                break;
-            case 'night':
-                document.documentElement.style.setProperty('--time-primary', '#2c3e50');
-                document.documentElement.style.setProperty('--time-secondary', '#34495e');
-                document.documentElement.style.setProperty('--time-accent', '#3498db');
-                document.documentElement.style.setProperty('--time-highlight', '#6ab7e2');
-                document.documentElement.style.setProperty('--time-bg-gradient', 
-                    'linear-gradient(to bottom, rgba(44, 62, 80, 0.2), rgba(52, 73, 94, 0.15), rgba(52, 152, 219, 0.1))');
-                break;
-        }
-        
-        // Update the subtitle text
-        updateTimeOfDaySubtitle(timePeriod);
-    }
+    const currentText = greeting.textContent;
     
-    /**
-     * Updates the subtitle based on time of day
-     */
-    function updateTimeOfDaySubtitle(timePeriod) {
-        // Only update the subtitle if English is selected
-        const langIndicator = document.getElementById('lang-indicator');
-        if (langIndicator && langIndicator.classList.contains('lang-en')) {
-            const subtitle = document.querySelector('.header p');
-            if (subtitle) {
-                let greeting = '';
-                switch(timePeriod) {
-                    case 'dawn':
-                        greeting = 'Good dawn! ';
-                        break;
-                    case 'morning':
-                        greeting = 'Good morning! ';
-                        break;
-                    case 'afternoon':
-                        greeting = 'Good afternoon! ';
-                        break;
-                    case 'evening':
-                    case 'night':
-                        greeting = 'Good evening! ';
-                        break;
-                    default:
-                        greeting = 'Good day! ';
-                }
-                
-                subtitle.textContent = greeting + 'Start a conversation with an icebreaker.';
-            }
-        }
-    }
+    // Only update the time-of-day part, preserve the rest of the greeting
+    const updatedText = currentText.replace(/^(Good morning!|Good afternoon!|Good evening!|Good night!)/, timeGreeting);
+    greeting.textContent = updatedText;
+  }
+  
+  // Initialize time-based features
+  function initTimeBasedColors() {
+    const timePeriod = getCurrentTimePeriod();
+    updateTimeBasedColors(timePeriod);
+    updateTimeOfDaySubtitle(timePeriod);
     
-    /**
-     * Initializes the time-based color transitions
-     */
-    function initTimeBasedColors() {
-        // Set initial colors
-        updateTimeBasedColors();
-        
-        // Update colors every 5 minutes
-        setInterval(updateTimeBasedColors, 5 * 60 * 1000);
-    }
-    
-    // Make getCurrentTimePeriod globally available
-    window.getCurrentTimePeriod = getCurrentTimePeriod;
-    
-    // Initialize
-    initTimeBasedColors();
+    // Update colors every hour
+    setInterval(() => {
+      const newTimePeriod = getCurrentTimePeriod();
+      updateTimeBasedColors(newTimePeriod);
+      updateTimeOfDaySubtitle(newTimePeriod);
+    }, 3600000); // 1 hour
+  }
 });
