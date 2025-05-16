@@ -147,46 +147,52 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 60px;
-            height: 60px;
+            width: 150px; /* 2.5x larger */
+            height: 150px; /* 2.5x larger */
             background-color: #d32f2f;
-            border-radius: 5px 5px 30px 30px;
+            border-radius: 15px 15px 75px 75px;
             z-index: 10;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-        }
-        
-        .coffee-mug:hover {
-            transform: translateY(-5px);
             cursor: pointer;
         }
         
         .coffee-handle {
             position: absolute;
-            right: -20px;
-            top: 15px;
-            width: 20px;
-            height: 25px;
-            border: 5px solid #d32f2f;
+            right: -45px;
+            top: 35px;
+            width: 45px;
+            height: 60px;
+            border: 10px solid #d32f2f;
             border-left: none;
-            border-radius: 0 25px 25px 0;
+            border-radius: 0 50px 50px 0;
+        }
+        
+        .coffee-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background-color: #6f4e37; /* Default coffee color */
+            border-radius: 0 0 75px 75px;
         }
         
         .steam {
             position: absolute;
-            top: -15px;
-            left: 15px;
-            width: 30px;
-            height: 40px;
+            top: -25px;
+            left: 50px;
+            width: 50px;
+            height: 60px;
             opacity: 0.7;
-            filter: blur(5px);
+            filter: blur(8px);
             animation: steaming 3s infinite;
         }
         
         @keyframes steaming {
             0% { transform: translateY(0) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-10px) scale(1.2); opacity: 0.4; }
-            100% { transform: translateY(-20px) scale(0.8); opacity: 0; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 0.4; }
+            100% { transform: translateY(-40px) scale(0.8); opacity: 0; }
         }
         
         .steam:before,
@@ -202,8 +208,30 @@
         }
         
         .steam:after {
-            bottom: -10px;
-            left: 10px;
+            bottom: -15px;
+            left: 15px;
+        }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
         }
         
         /* Dark mode */
@@ -236,70 +264,9 @@
             color: #7a96e0;
         }
         
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: #f5f5f5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-        
         body.dark-mode .dark-mode-toggle {
             background-color: #444;
             color: #f5f5f5;
-        }
-        
-        .question-type-selector {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .question-type {
-            padding: 5px 10px;
-            background-color: #f5f5f5;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .question-type:hover {
-            background-color: #e0e0e0;
-        }
-        
-        .question-type.active {
-            background-color: #4a6ee0;
-            color: white;
-        }
-        
-        body.dark-mode .question-type {
-            background-color: #555;
-            color: #f5f5f5;
-        }
-        
-        body.dark-mode .question-type:hover {
-            background-color: #666;
-        }
-        
-        body.dark-mode .question-type.active {
-            background-color: #7a96e0;
         }
     </style>
 </head>
@@ -321,13 +288,6 @@
                 <button id="keanu-button">Keanu Mode</button>
             </div>
             
-            <div class="question-type-selector" id="question-types">
-                <div class="question-type active" data-type="random">Random</div>
-                <div class="question-type" data-type="would-you-rather-bad">Would You Rather (Bad)</div>
-                <div class="question-type" data-type="would-you-rather-good">Would You Rather (Good)</div>
-                <div class="question-type" data-type="open-ended">Open-Ended</div>
-            </div>
-            
             <div class="result">
                 <p id="result-text">Click any button above to generate an icebreaker!</p>
                 <button onclick="copyToClipboard()" class="copy-btn" title="Copy to clipboard">⎘</button>
@@ -341,25 +301,25 @@
     
     <div class="coffee-mug" onclick="changeMugColor()">
         <div class="coffee-handle"></div>
+        <div class="coffee-content" ondblclick="changeCoffeeType()"></div>
         <div class="steam"></div>
     </div>
     
-    <script src="data.js"></script>
     <script>
         // DOM elements
         const title = document.getElementById('title');
         const subtitle = document.getElementById('subtitle');
         const resultText = document.getElementById('result-text');
         const footerText = document.getElementById('footer-text');
-        const questionTypes = document.getElementById('question-types');
         const coffeeMug = document.querySelector('.coffee-mug');
         const coffeeMugHandle = document.querySelector('.coffee-handle');
+        const coffeeContent = document.querySelector('.coffee-content');
         
         // Current state
         let currentLanguage = 'en';
         let currentText = '';
-        let currentQuestionType = 'random';
         let prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let coffeeType = 'black'; // Default coffee type
         
         // Initialize dark mode based on system preference
         if (prefersDarkMode) {
@@ -367,148 +327,74 @@
             document.querySelector('.dark-mode-toggle').textContent = '🌙';
         }
         
-        // Button click handlers
-        document.getElementById('en-button').addEventListener('click', () => generateIcebreaker('en'));
-        document.getElementById('fr-button').addEventListener('click', () => generateIcebreaker('fr'));
-        document.getElementById('jp-button').addEventListener('click', () => generateIcebreaker('jp'));
-        document.getElementById('keanu-button').addEventListener('click', () => generateIcebreaker('keanu'));
-        
-        // Question type selector
-        const questionTypeElements = document.querySelectorAll('.question-type');
-        questionTypeElements.forEach(element => {
-            element.addEventListener('click', () => {
-                // Update active state
-                questionTypeElements.forEach(el => el.classList.remove('active'));
-                element.classList.add('active');
-                
-                // Set current type
-                currentQuestionType = element.dataset.type;
-                
-                // Generate new icebreaker if we have a language selected
-                if (currentLanguage) {
-                    generateIcebreaker(currentLanguage);
-                }
-            });
+        // Load requirements.py when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchIcebreaker('requirements');
         });
         
-        // Generate icebreaker
-        function generateIcebreaker(language) {
-            const languageData = icebreaker_data[language];
-            currentLanguage = language;
-            
-            // Update UI language
-            title.textContent = languageData.title;
-            subtitle.textContent = languageData.subtitle;
-            footerText.textContent = languageData.footer;
-            
-            // Generate icebreaker based on selected type
-            if (language === 'keanu') {
-                // For Keanu mode, just use the Keanu trivia
-                const allKeanuFacts = [...languageData.keanu_trivia, ...languageData.icebreakers];
-                currentText = getRandomItem(allKeanuFacts);
-            } else {
-                switch (currentQuestionType) {
-                    case 'would-you-rather-bad':
-                        const badOptionsKey = language === 'en' ? 'bad_options' : 
-                                             language === 'fr' ? 'mauvaises_prefs' : 'bad_jp';
-                        const badOptions = getRandomItems(languageData[badOptionsKey], 2);
-                        
-                        if (language === 'en') {
-                            currentText = `Would you rather ${badOptions[0]}, or ${badOptions[1]}?`;
-                        } else if (language === 'fr') {
-                            currentText = `Vous préféreriez ${badOptions[0]}, ou ${badOptions[1]}?`;
-                        } else { // Japanese
-                            currentText = `あなたは ${badOptions[0]} と ${badOptions[1]} のどちらを好みますか？`;
-                        }
+        // Button click handlers
+        document.getElementById('en-button').addEventListener('click', () => fetchIcebreaker('en'));
+        document.getElementById('fr-button').addEventListener('click', () => fetchIcebreaker('fr'));
+        document.getElementById('jp-button').addEventListener('click', () => fetchIcebreaker('jp'));
+        document.getElementById('keanu-button').addEventListener('click', () => fetchIcebreaker('keanu'));
+        
+        // Fetch icebreaker from server
+        async function fetchIcebreaker(language) {
+            try {
+                // Show loading state
+                resultText.textContent = 'Loading...';
+                
+                let endpoint;
+                switch (language) {
+                    case 'en':
+                        endpoint = '/generate_english';
                         break;
-                        
-                    case 'would-you-rather-good':
-                        const goodOptionsKey = language === 'en' ? 'good_options' : 
-                                              language === 'fr' ? 'bonnes_prefs' : 'good_jp';
-                        const goodOptions = getRandomItems(languageData[goodOptionsKey], 2);
-                        
-                        if (language === 'en') {
-                            currentText = `Would you rather ${goodOptions[0]}, or ${goodOptions[1]}?`;
-                        } else if (language === 'fr') {
-                            currentText = `Vous préféreriez ${goodOptions[0]}, ou ${goodOptions[1]}?`;
-                        } else { // Japanese
-                            currentText = `あなたは ${goodOptions[0]} と ${goodOptions[1]} のどちらを好みますか？`;
-                        }
+                    case 'fr':
+                        endpoint = '/generate_french';
                         break;
-                        
-                    case 'open-ended':
-                        const openEndedKey = language === 'en' ? 'open_ended' : 
-                                            language === 'fr' ? 'ouvertes' : 'open_jp';
-                        currentText = getRandomItem(languageData[openEndedKey]);
+                    case 'jp':
+                        endpoint = '/generate_japanese';
                         break;
-                        
-                    default: // random
-                        // Define all possible options
-                        const options = [
-                            // Would You Rather (Bad)
-                            () => {
-                                const badOptionsKey = language === 'en' ? 'bad_options' : 
-                                                    language === 'fr' ? 'mauvaises_prefs' : 'bad_jp';
-                                const badOptions = getRandomItems(languageData[badOptionsKey], 2);
-                                
-                                if (language === 'en') {
-                                    return `Would you rather ${badOptions[0]}, or ${badOptions[1]}?`;
-                                } else if (language === 'fr') {
-                                    return `Vous préféreriez ${badOptions[0]}, ou ${badOptions[1]}?`;
-                                } else { // Japanese
-                                    return `あなたは ${badOptions[0]} と ${badOptions[1]} のどちらを好みますか？`;
-                                }
-                            },
-                            
-                            // Would You Rather (Good)
-                            () => {
-                                const goodOptionsKey = language === 'en' ? 'good_options' : 
-                                                      language === 'fr' ? 'bonnes_prefs' : 'good_jp';
-                                const goodOptions = getRandomItems(languageData[goodOptionsKey], 2);
-                                
-                                if (language === 'en') {
-                                    return `Would you rather ${goodOptions[0]}, or ${goodOptions[1]}?`;
-                                } else if (language === 'fr') {
-                                    return `Vous préféreriez ${goodOptions[0]}, ou ${goodOptions[1]}?`;
-                                } else { // Japanese
-                                    return `あなたは ${goodOptions[0]} と ${goodOptions[1]} のどちらを好みますか？`;
-                                }
-                            },
-                            
-                            // Open-Ended
-                            () => {
-                                const openEndedKey = language === 'en' ? 'open_ended' : 
-                                                    language === 'fr' ? 'ouvertes' : 'open_jp';
-                                return getRandomItem(languageData[openEndedKey]);
-                            },
-                            
-                            // Additional icebreakers
-                            () => {
-                                return getRandomItem(languageData.icebreakers);
-                            }
-                        ];
-                        
-                        // Execute a random function from options
-                        const randomOption = getRandomItem(options);
-                        currentText = randomOption();
+                    case 'keanu':
+                        endpoint = '/generate_keanu';
+                        break;
+                    case 'requirements':
+                        endpoint = '/';
+                        break;
                 }
+                
+                const response = await fetch(endpoint);
+                
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                currentLanguage = language;
+                
+                // Update UI with the received data
+                if (language !== 'requirements') {
+                    updateUI(data);
+                }
+            } catch (error) {
+                console.error('Error fetching icebreaker:', error);
+                resultText.textContent = 'Failed to load icebreaker. Please try again.';
             }
-            
-            // Update result text
-            resultText.textContent = currentText;
+        }
+        
+        // Update UI with data from the server
+        function updateUI(data) {
+            title.textContent = data.title || title.textContent;
+            subtitle.textContent = data.subtitle || subtitle.textContent;
+            resultText.textContent = data.icebreaker || 'No icebreaker available';
+            footerText.textContent = data.footer || footerText.textContent;
+            currentText = data.icebreaker || '';
             
             // Update copy button color
             document.querySelector('.copy-btn').style.backgroundColor = 
-                language === 'en' ? '#f47b7b' : 
-                language === 'fr' ? '#4acea3' : 
-                language === 'jp' ? '#ffd15c' : '#2193b0';
-                
-            // Show/hide question type selector for non-Keanu modes
-            if (language === 'keanu') {
-                questionTypes.style.display = 'none';
-            } else {
-                questionTypes.style.display = 'flex';
-            }
+                currentLanguage === 'en' ? '#f47b7b' : 
+                currentLanguage === 'fr' ? '#4acea3' : 
+                currentLanguage === 'jp' ? '#ffd15c' : '#2193b0';
         }
         
         // Copy to clipboard
@@ -547,22 +433,141 @@
         // Change mug color
         function changeMugColor() {
             const colors = ['#d32f2f', '#388e3c', '#1976d2', '#ffa000', '#7b1fa2', '#e64a19', '#00897b'];
-            const randomColor = getRandomItem(colors);
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
             
             coffeeMug.style.backgroundColor = randomColor;
             coffeeMugHandle.style.borderColor = randomColor;
         }
         
-        // Helper function to get random item from array
-        function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
+        // Change coffee type
+        function changeCoffeeType() {
+            switch (coffeeType) {
+                case 'black':
+                    // Change to espresso
+                    coffeeContent.style.backgroundColor = '#3c2415';
+                    coffeeContent.style.height = '40%';
+                    coffeeType = 'espresso';
+                    break;
+                case 'espresso':
+                    // Change to latte
+                    coffeeContent.style.backgroundColor = '#c6a47f';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'latte';
+                    break;
+                case 'latte':
+                    // Change to cappuccino
+                    coffeeContent.style.backgroundColor = '#b08b63';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'cappuccino';
+                    break;
+                case 'cappuccino':
+                    // Change to black coffee
+                    coffeeContent.style.backgroundColor = '#6f4e37';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'black';
+                    break;
+            }
         }
         
-        // Helper function to get multiple random items from array
-        function getRandomItems(array, count) {
-            const shuffled = [...array].sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, count);
+        // Fallback data for GitHub Pages (when server is not available)
+        const fallbackData = {
+            en: {
+                title: "Icebreaker",
+                subtitle: "Start a conversation with an icebreaker.",
+                footer: "Start your day with bright conversations",
+                icebreakers: [
+                    "If you could have dinner with any historical figure, who would it be and why?",
+                    "What's the most interesting place you've ever visited?",
+                    "If you could instantly become an expert in something, what would it be?",
+                    "What's your favorite book or movie and why does it resonate with you?",
+                    "If you could live in any fictional world, which would you choose?"
+                ]
+            },
+            fr: {
+                title: "Brise-Glace",
+                subtitle: "Commencez une conversation avec un brise-glace.",
+                footer: "Commencez votre journée avec des conversations brillantes",
+                icebreakers: [
+                    "Si vous pouviez dîner avec n'importe quelle figure historique, qui choisiriez-vous et pourquoi?",
+                    "Quel est l'endroit le plus intéressant que vous ayez jamais visité?",
+                    "Si vous pouviez instantanément devenir expert en quelque chose, que serait-ce?",
+                    "Quel est votre livre ou film préféré et pourquoi vous touche-t-il?",
+                    "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous?"
+                ]
+            },
+            jp: {
+                title: "会話術",
+                subtitle: "会話を始めるきっかけに使いましょう。",
+                footer: "会話で明るい一日を始めましょう",
+                icebreakers: [
+                    "歴史上の人物と夕食を共にできるとしたら、誰を選びますか？また、その理由は？",
+                    "今まで訪れた中で最も興味深い場所はどこですか？",
+                    "一瞬でエキスパートになれるとしたら、何を選びますか？",
+                    "あなたのお気に入りの本や映画は何ですか？それはなぜあなたの心に響くのですか？",
+                    "どんなフィクションの世界に住むことができるとしたら、どこを選びますか？"
+                ]
+            },
+            keanu: {
+                title: "Keanu Mode",
+                subtitle: "Learn something amazing about Keanu Reeves.",
+                footer: "Keanu Reeves is breathtaking",
+                icebreakers: [
+                    "Keanu Reeves once helped a stranded stranger by driving her 50 miles out of his way.",
+                    "Keanu Reeves gave away a significant portion of his Matrix earnings to the special effects team.",
+                    "Keanu Reeves often takes pay cuts so films can hire other actors they want.",
+                    "Keanu Reeves secretly funds children's hospitals and doesn't attach his name to the donations.",
+                    "It's possible that Keanu Reeves accidentally married Winona Ryder."
+                ]
+            }
+        };
+        
+        // In case of fetch error, use fallback data for GitHub Pages
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName.toLowerCase() === 'script') {
+                console.log('Script error occurred. Setting up GitHub Pages fallback.');
+                setupGitHubPagesFallback();
+            }
+        }, true);
+        
+        // Setup GitHub Pages fallback for when server endpoints are not available
+        function setupGitHubPagesFallback() {
+            // Override the fetchIcebreaker function for GitHub Pages
+            window.fetchIcebreaker = function(language) {
+                if (language === 'requirements') return; // Skip requirements for GitHub Pages
+                
+                currentLanguage = language;
+                
+                const data = fallbackData[language];
+                const randomIndex = Math.floor(Math.random() * data.icebreakers.length);
+                
+                const gitHubPagesData = {
+                    title: data.title,
+                    subtitle: data.subtitle,
+                    icebreaker: data.icebreakers[randomIndex],
+                    footer: data.footer
+                };
+                
+                updateUI(gitHubPagesData);
+            };
+            
+            // Re-add event listeners with the new function
+            document.getElementById('en-button').onclick = () => fetchIcebreaker('en');
+            document.getElementById('fr-button').onclick = () => fetchIcebreaker('fr');
+            document.getElementById('jp-button').onclick = () => fetchIcebreaker('jp');
+            document.getElementById('keanu-button').onclick = () => fetchIcebreaker('keanu');
         }
+        
+        // Check if we're on GitHub Pages by trying to access the server
+        fetch('/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Not running on server');
+                }
+            })
+            .catch(error => {
+                console.log('Running on GitHub Pages, setting up fallback mode');
+                setupGitHubPagesFallback();
+            });
     </script>
 </body>
 </html>
