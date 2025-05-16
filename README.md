@@ -3,20 +3,28 @@
 # Icebreaker Generator  
 ### Surprise!  
   
-To thank you for the past three months, I've taken what I've learned from DSB-210 and written an icebreaker generator capable of generating 5,724 unique, safe-for-work icebreakers, to streamline the task of finding and copying an icebreaker to be pasted into a chat.  
+To thank you for the past three months, I've taken what I've learned from DSB-210 and written an [icebreaker generator](https://lingasc.github.io/icebreaker-generator-thanks/) capable of generating 5,724 unique, safe-for-work icebreakers, to streamline the task of finding and copying an icebreaker to be pasted into a chat.  
 
 ### The Purpose of This Generator:  
 This simple, lightweight MVP was built to provide increased convenience for putting icebreakers into online chats. Plus a little added fun:  
 
 - French translations for Matt
 - Japanese translations for Eric
-- Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours
+- Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours  
+  
+## Bonus Features: Special Website Interactivity!  
+  
+- Colors change from sunrise to dusk depending on user's local time of day
+- Greetings subheading changes depending on your local time of day
+- Customizable coffee mug with animated steam
+- Dark mode toggle
+- Easy one-click icebreaker copy-paste
+- Interface translated into English, French, and Japanese  
   
 ### Best for:  
 Remote team building.  
-
-### [Check Out the Icebreaker Generator Live!](https://lingasc.github.io/icebreaker-generator-thanks/)  
   
+## [Try Out the Icebreaker Generator Here!](https://lingasc.github.io/icebreaker-generator-thanks/)  
 ---  
 
 ![](https://cdn.notonthehighstreet.com/system/product_images/images/001/332/036/original_set-of-12-colourful-thank-you-note-cards.jpg)  
@@ -52,7 +60,7 @@ However, if we're talking about solving a problem of convenience, then this prog
 |Free                        |✓           |✓        |✓            |
 |Fast                        |✓           |✓        |✓            |
 
-## How It Works:  
+## How It Works (Backend):  
   
 The code generates icebreakers at random by putting together a question from phrases sourced from the [breakfast hour dataset](data/breakfast_hour.csv). (By random, I mean in the way computers can simulate randomness.)  
 
@@ -63,10 +71,18 @@ The code generates icebreakers at random by putting together a question from phr
    
 The code can also print French and Japanese translations of the generated question.  
 
-It can also generate a random piece of Keanu Reeves trivia instead of a question.
+It can also generate a random piece of Keanu Reeves trivia instead of a question.  
+  
+## How It Works (Frontend):  
 
----
-
+- Colors change from sunrise to dusk depending on user's local time of day
+- JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day
+- Clicking on a button runs the code that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
+- Clicking on coffee cup icon in bottom right screen activates customizable coffee mug feature
+- Clicking on sun icon toggles dark mode
+- Easy one-click icebreaker copy-paste with clipboard icon
+- Interface translated into English, French, and Japanese depending on the language button clicked  
+  
 ## The Concept  
 The program is based on my experience of our own breakfast hour icebreakers, which seem to fit into two categories:  
   
