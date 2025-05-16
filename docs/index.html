@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icebreaker Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f9c5bd;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        #en-button {
+            background-color: #f47b7b;
+            color: white;
+        }
+        
+        #fr-button {
+            background-color: #4acea3;
+            color: white;
+        }
+        
+        #jp-button {
+            background-color: #ffd15c;
+            color: #333;
+        }
+        
+        #keanu-button {
+            background-color: #2193b0;
+            color: white;
+        }
+        
+        .result {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #result-text {
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            bottom: -15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background-color: #f47b7b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        a {
+            color: #4a6ee0;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .coffee-mug {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #d32f2f;
+            border-radius: 5px 5px 30px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="title">Icebreaker</h1>
+        </header>
+        
+        <main>
+            <p id="subtitle">Start a conversation with an icebreaker.</p>
+            
+            <div class="buttons">
+                <button id="en-button">English</button>
+                <button id="fr-button">Français</button>
+                <button id="jp-button">日本語</button>
+                <button id="keanu-button">Keanu Mode</button>
+            </div>
+            
+            <div class="result">
+                <p id="result-text">Click any button above to generate an icebreaker!</p>
+                <button onclick="copyToClipboard()" class="copy-btn">⎘</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 <a href="https://github.com/lingasc">lingasc</a> | <span id="footer-text">Start your day with bright conversations</span></p>
+        </footer>
+    </div>
+    
+    <div class="coffee-mug"></div>
+    
+    <script>
+        // Content data
+        const data = {
+            en: {
+                title: "Icebreaker",
+                subtitle: "Start a conversation with an icebreaker.",
+                footer: "Start your day with bright conversations",
+                icebreakers: [
+                    "If you could have dinner with any historical figure, who would it be and why?",
+                    "What's the most interesting place you've ever visited?",
+                    "If you could instantly become an expert in something, what would it be?",
+                    "What's your favorite book or movie and why does it resonate with you?",
+                    "If you could live in any fictional world, which would you choose?"
+                ]
+            },
+            fr: {
+                title: "Brise-Glace",
+                subtitle: "Commencez une conversation avec un brise-glace.",
+                footer: "Commencez votre journée avec des conversations brillantes",
+                icebreakers: [
+                    "Si vous pouviez dîner avec n'importe quelle figure historique, qui choisiriez-vous et pourquoi?",
+                    "Quel est l'endroit le plus intéressant que vous ayez jamais visité?",
+                    "Si vous pouviez instantanément devenir expert en quelque chose, que serait-ce?",
+                    "Quel est votre livre ou film préféré et pourquoi vous touche-t-il?",
+                    "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous?"
+                ]
+            },
+            jp: {
+                title: "会話術",
+                subtitle: "会話を始めるきっかけに使いましょう。",
+                footer: "会話で明るい一日を始めましょう",
+                icebreakers: [
+                    "歴史上の人物と夕食を共にできるとしたら、誰を選びますか？また、その理由は？",
+                    "今まで訪れた中で最も興味深い場所はどこですか？",
+                    "一瞬でエキスパートになれるとしたら、何を選びますか？",
+                    "あなたのお気に入りの本や映画は何ですか？それはなぜあなたの心に響くのですか？",
+                    "どんなフィクションの世界に住むことができるとしたら、どこを選びますか？"
+                ]
+            },
+            keanu: {
+                title: "Keanu Mode",
+                subtitle: "Learn something amazing about Keanu Reeves.",
+                footer: "Keanu Reeves is breathtaking",
+                icebreakers: [
+                    "Keanu Reeves once helped a stranded stranger by driving her 50 miles out of his way.",
+                    "Keanu Reeves gave away a significant portion of his Matrix earnings to the special effects team.",
+                    "Keanu Reeves often takes pay cuts so films can hire other actors they want.",
+                    "Keanu Reeves secretly funds children's hospitals and doesn't attach his name to the donations.",
+                    "It's possible that Keanu Reeves accidentally married Winona Ryder."
+                ]
+            }
+        };
+        
+        // DOM elements
+        const title = document.getElementById('title');
+        const subtitle = document.getElementById('subtitle');
+        const resultText = document.getElementById('result-text');
+        const footerText = document.getElementById('footer-text');
+        
+        // Current state
+        let currentLanguage = 'en';
+        let currentText = '';
+        
+        // Button click handlers
+        document.getElementById('en-button').addEventListener('click', () => generateIcebreaker('en'));
+        document.getElementById('fr-button').addEventListener('click', () => generateIcebreaker('fr'));
+        document.getElementById('jp-button').addEventListener('click', () => generateIcebreaker('jp'));
+        document.getElementById('keanu-button').addEventListener('click', () => generateIcebreaker('keanu'));
+        
+        // Generate icebreaker
+        function generateIcebreaker(language) {
+            const languageData = data[language];
+            const randomIndex = Math.floor(Math.random() * languageData.icebreakers.length);
+            const icebreaker = languageData.icebreakers[randomIndex];
+            
+            title.textContent = languageData.title;
+            subtitle.textContent = languageData.subtitle;
+            resultText.textContent = icebreaker;
+            footerText.textContent = languageData.footer;
+            
+            currentLanguage = language;
+            currentText = icebreaker;
+            
+            // Update copy button color
+            document.querySelector('.copy-btn').style.backgroundColor = 
+                language === 'en' ? '#f47b7b' : 
+                language === 'fr' ? '#4acea3' : 
+                language === 'jp' ? '#ffd15c' : '#2193b0';
+        }
+        
+        // Copy to clipboard
+        function copyToClipboard() {
+            if (currentText) {
+                navigator.clipboard.writeText(currentText)
+                    .then(() => {
+                        const copyBtn = document.querySelector('.copy-btn');
+                        copyBtn.textContent = '✓';
+                        setTimeout(() => {
+                            copyBtn.textContent = '⎘';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+            }
+        }
+    </script>
+</body>
+</html>
