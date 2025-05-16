@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Icebreaker Generator</title>
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,29 +14,572 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Base styles with simplified colors and elements */
+        :root {
+            --coral: #f47b7b;
+            --orange: #f49e6e;
+            --gold: #ffd15c;
+            --light-yellow: #fff27c;
+            --mint: #4acea3;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9c5bd;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Simple gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f9c5bd, #f8d5a9);
+            z-index: -1;
+        }
+        
+        /* Container styles */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        /* Window frame */
+        .window-frame {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 30px auto;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Window control bar */
+        .window-controls {
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .window-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .window-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .window-close {
+            background-color: #ff5f56;
+        }
+        
+        .window-minimize {
+            background-color: #ffbd2e;
+        }
+        
+        .window-maximize {
+            background-color: #27c93f;
+        }
+        
+        .window-title {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        /* Header styles */
+        .header {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+        
+        .header h1 {
+            font-size: 84px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .jp-heading {
+            font-size: 64px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        /* Content styles */
+        .content {
+            padding: 20px 40px 40px;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Button styles */
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .btn-en {
+            border: 2px solid var(--coral);
+        }
+        
+        .btn-fr {
+            border: 2px solid var(--mint);
+        }
+        
+        .btn-jp {
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-keanu {
+            background: linear-gradient(45deg, #2193b0, #6dd5ed);
+            color: white;
+        }
+        
+        /* Result container */
+        .result-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 30px;
+            min-height: 150px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .result-text {
+            font-size: 24px;
+            line-height: 1.5;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        
+        .jp-text {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 10;
+            border-radius: 4px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--coral);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Share button */
+        .share-button {
+            position: absolute;
+            bottom: -15px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--coral);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+        }
+        
+        .share-button:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        
+        .footer a {
+            color: #4a6ee0;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Dark mode toggle */
+        .toggle-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .mode-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        
+        /* Coffee mug styles */
+        .coffee-mug-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 50;
+        }
+        
+        .coffee-mug {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .coffee-mug:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mug-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            background-color: #d32f2f;
+            border-radius: 5px 5px 30px 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mug-contents {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background-color: #5d4037;
+            border-radius: 0 0 25px 25px;
+        }
+        
+        .mug-handle {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            width: 20px;
+            height: 30px;
+            border: 6px solid #d32f2f;
+            border-left: none;
+            border-radius: 0 15px 15px 0;
+        }
+        
+        .steam-container {
+            position: absolute;
+            bottom: 60px;
+            left: 15px;
+            width: 30px;
+            height: 40px;
+            z-index: 25;
+        }
+        
+        .steam {
+            position: absolute;
+            bottom: 0;
+            width: 8px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            animation: steam 3s infinite ease-out;
+            transform-origin: bottom;
+            opacity: 0;
+        }
+        
+        .steam:nth-child(1) {
+            left: 0;
+            animation-delay: 0.3s;
+            height: 35px;
+        }
+        
+        .steam:nth-child(2) {
+            left: 10px;
+            animation-delay: 0.5s;
+            height: 40px;
+        }
+        
+        .steam:nth-child(3) {
+            left: 20px;
+            animation-delay: 0.7s;
+            height: 35px;
+        }
+        
+        @keyframes steam {
+            0% {
+                transform: translateY(0) scaleX(1);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) scaleX(0.8);
+            }
+            95% {
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(-50px) scaleX(0.5);
+                opacity: 0;
+            }
+        }
+        
+        /* Flag styles */
+        .us-flag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 15px;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .us-flag-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .us-stripes {
+            position: absolute;
+            width: 100%;
+            height: 7.69%;
+            background-color: #B22234;
+        }
+        
+        .us-stripe-1 { top: 0; }
+        .us-stripe-2 { top: 15.38%; }
+        .us-stripe-3 { top: 30.76%; }
+        .us-stripe-4 { top: 46.14%; }
+        .us-stripe-5 { top: 61.52%; }
+        .us-stripe-6 { top: 76.9%; }
+        .us-stripe-7 { top: 92.28%; }
+        
+        .us-blue {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 53.83%;
+            background-color: #3C3B6E;
+        }
+        
+        /* FR flag */
+        .fr-flag {
+            display: flex;
+            width: 20px;
+            height: 15px;
+        }
+        
+        .fr-blue {
+            width: 33.33%;
+            height: 100%;
+            background-color: #0055A4;
+        }
+        
+        .fr-white {
+            width: 33.33%;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .fr-red {
+            width: 33.33%;
+            height: 100%;
+            background-color: #EF4135;
+        }
+        
+        /* JP flag */
+        .jp-flag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 15px;
+            background-color: white;
+        }
+        
+        .jp-circle {
+            width: 60%;
+            height: 60%;
+            background-color: #BC002D;
+            border-radius: 50%;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 70px;
+            }
+            
+            .content {
+                padding: 15px 20px 30px;
+            }
+            
+            .result-text {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 50px;
+            }
+            
+            .buttons-container {
+                flex-wrap: wrap;
+            }
+            
+            .coffee-mug-container {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Interface Toggles -->
     <div class="toggle-buttons">
-        <!-- Dark Mode Toggle -->
         <button class="mode-toggle" id="dark-mode-toggle" aria-label="Toggle Dark Mode">
             <i class="fas fa-sun" id="dark-mode-icon"></i>
         </button>
-    </div>
-    
-    <!-- Background Elements -->
-    <div class="bg-layer-deep"></div>
-    <div class="bg-layer-middle"></div>
-    <div class="bg-layer-foreground"></div>
-    
-    <!-- Additional light effects -->
-    <div class="bg-floating-elements">
-        <div class="pulsing-light"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="pulsing-light"></div>
     </div>
     
     <!-- Main content -->
@@ -57,8 +597,8 @@
             
             <!-- Header with title and subtitle -->
             <header class="header">
-                <h1><span>I</span><span>c</span><span>e</span><span>b</span><span>r</span><span>e</span><span>a</span><span>k</span><span>e</span><span>r</span></h1>
-                <p>Good morning! Start a conversation with an icebreaker.</p>
+                <h1 id="main-title">Icebreaker</h1>
+                <p id="subtitle">Start a conversation with an icebreaker.</p>
             </header>
             
             <!-- Main content area -->
@@ -66,19 +606,36 @@
                 <!-- Language selection buttons -->
                 <div class="buttons-container">
                     <button id="en-button" class="btn btn-en">
-                        <img src="img/flags/us-flag.svg" alt="English" />
+                        <div class="us-flag">
+                            <div class="us-flag-inner">
+                                <div class="us-blue"></div>
+                                <div class="us-stripes us-stripe-1"></div>
+                                <div class="us-stripes us-stripe-2"></div>
+                                <div class="us-stripes us-stripe-3"></div>
+                                <div class="us-stripes us-stripe-4"></div>
+                                <div class="us-stripes us-stripe-5"></div>
+                                <div class="us-stripes us-stripe-6"></div>
+                                <div class="us-stripes us-stripe-7"></div>
+                            </div>
+                        </div>
                         English
                     </button>
                     <button id="fr-button" class="btn btn-fr">
-                        <img src="img/flags/fr-flag.svg" alt="French" />
+                        <div class="fr-flag">
+                            <div class="fr-blue"></div>
+                            <div class="fr-white"></div>
+                            <div class="fr-red"></div>
+                        </div>
                         Français
                     </button>
                     <button id="jp-button" class="btn btn-jp">
-                        <img src="img/flags/jp-flag.svg" alt="Japanese" />
+                        <div class="jp-flag">
+                            <div class="jp-circle"></div>
+                        </div>
                         日本語
                     </button>
                     <button id="keanu-button" class="btn btn-keanu">
-                        <img src="img/flags/keanu.png" alt="Keanu" style="width:22px;height:22px;" />
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAAWABUDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAABQYHCAT/xAAvEAABAgUCAwQLAAAAAAAAAAABAgMABAUGERIHCBMxQSFRkRUWFzNDUlRhcYHC/8QAFwEBAQEBAAAAAAAAAAAAAAAABAUDBv/EACMRAAIBAwMEAwAAAAAAAAAAAAECAAMRIQQSMQVBUYETMmH/2gAMAwEAAhEDEQA/AKRucmE5tRwkBSWdQGdj8UEZWkXU53NStYAOwESYuirZ9Rk0GRfAOqNUZSbTxF8yU43IHfO0SzpWmpaT0kvyfnpd2Xqc7Ulh9Ak1OagA4QVJTnYDIz37fqKJSao3ECSGU5xPVCenZ1t5A5RwCcExwMQ6NXpaWdUxMOmZcEuGdQQlW2wPA5JMW3bkkxOWW5KuhSmy2hQwoHIIjgpkNZfbODLOJn3k7gdzBxbf9jBHQK6rh1I9eJyUVw7NrwcBzqaMQRr1LS06kAiZ9QCQbRZFy1Q0rVuWbdNkXQrDSluYJSnGQBknrneJXfZxatyAYlHVYwCQAQOgJgKuyrrvSsTBqFVdTJMpJVwWkkD+1dsn8wHZ1v3PLOp5yEqGSk9M+I/cJ1s97+ySm2O0OZQOlOSVT0s42cFIWkggwRM9UzCyMiI2aHIyy+5xnEKL76nMYGIZBW0jmKaVSmKvaTfFU6iWkTh0pUSrjIOcfjaCAabT9JK/5IIxfUt4E2FBdpOZ//Z" alt="Keanu" style="width:22px;height:22px;" />
                         Keanu Mode
                     </button>
                 </div>
@@ -86,18 +643,15 @@
                 <!-- Result display area -->
                 <div class="result-container">
                     <!-- Loading spinner -->
-                    <div class="loader" style="display: none;">
+                    <div class="loader">
                         <div class="spinner"></div>
                     </div>
-                    
-                    <!-- Language indicator in corner -->
-                    <div id="lang-indicator" class="lang-indicator"></div>
                     
                     <!-- The actual result text -->
                     <p id="result-text" class="result-text">Click any button above to generate an icebreaker!</p>
                     
                     <!-- Clipboard button at bottom right -->
-                    <button onclick="copyToClipboard()" id="copy-btn" class="share-button lang-en">
+                    <button onclick="copyToClipboard()" id="copy-btn" class="share-button">
                         <i class="fas fa-clipboard"></i>
                         <span class="tooltip-text">Copy to clipboard</span>
                     </button>
@@ -106,14 +660,14 @@
             
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | Start your day with bright conversations</p>
+                <p>© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | <span id="footer-text">Start your day with bright conversations</span></p>
             </footer>
         </div>
     </div>
     
     <!-- Coffee mug in corner -->
     <div class="coffee-mug-container">
-        <div onclick="toggleMugCustomizer()" class="coffee-mug">
+        <div class="coffee-mug">
             <div class="mug-body">
                 <div class="mug-contents"></div>
             </div>
@@ -126,31 +680,223 @@
         </div>
     </div>
     
-    <!-- Mug customizer panel -->
-    <div class="mug-customizer">
-        <div class="customizer-title">Mug Color</div>
-        <div class="color-options">
-            <div class="color-option red active" data-color="red"></div>
-            <div class="color-option blue" data-color="blue"></div>
-            <div class="color-option green" data-color="green"></div>
-            <div class="color-option yellow" data-color="yellow"></div>
-            <div class="color-option white" data-color="white"></div>
-        </div>
-    </div>
-    
-    <!-- Simple inline script for the mug customizer -->
     <script>
-        function toggleMugCustomizer() {
-            const mugCustomizer = document.querySelector('.mug-customizer');
-            mugCustomizer.classList.toggle('visible');
+        // Data for the icebreaker generator
+        const icebreakerData = {
+            en: [
+                "If you could have dinner with any historical figure, who would it be and why?",
+                "What's the most interesting place you've ever visited?",
+                "If you could instantly become an expert in something, what would it be?",
+                "What's your favorite book or movie and why does it resonate with you?",
+                "If you could live in any fictional world, which would you choose?",
+                "What's a skill you'd like to learn or improve?",
+                "If you had to teach a class on something, what would you teach?",
+                "What's the best advice you've ever received?",
+                "If you could solve one world problem, what would it be?",
+                "What's something you believed as a child that you later found out wasn't true?"
+            ],
+            fr: [
+                "Si vous pouviez dîner avec n'importe quelle figure historique, qui choisiriez-vous et pourquoi?",
+                "Quel est l'endroit le plus intéressant que vous ayez jamais visité?",
+                "Si vous pouviez instantanément devenir expert en quelque chose, que serait-ce?",
+                "Quel est votre livre ou film préféré et pourquoi vous touche-t-il?",
+                "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous?",
+                "Quelle compétence aimeriez-vous apprendre ou améliorer?",
+                "Si vous deviez enseigner une matière, qu'enseigneriez-vous?",
+                "Quel est le meilleur conseil que vous ayez jamais reçu?",
+                "Si vous pouviez résoudre un problème mondial, lequel serait-ce?",
+                "Quelle est une chose que vous croyiez étant enfant et dont vous avez découvert plus tard qu'elle n'était pas vraie?"
+            ],
+            jp: [
+                "歴史上の人物と夕食を共にできるとしたら、誰を選びますか？また、その理由は？",
+                "今まで訪れた中で最も興味深い場所はどこですか？",
+                "一瞬でエキスパートになれるとしたら、何を選びますか？",
+                "あなたのお気に入りの本や映画は何ですか？それはなぜあなたの心に響くのですか？",
+                "どんなフィクションの世界に住むことができるとしたら、どこを選びますか？",
+                "学びたい、または上達したいスキルは何ですか？",
+                "何かを教えなければならないとしたら、何を教えますか？",
+                "今までに受けた最高のアドバイスは何ですか？",
+                "世界の問題を一つ解決できるとしたら、何を選びますか？",
+                "子どもの頃に信じていたけれど、後に真実ではないと分かったことは何ですか？"
+            ],
+            keanu: [
+                "Keanu Reeves once helped a stranded stranger by driving her 50 miles out of his way.",
+                "Keanu Reeves gave away a significant portion of his Matrix earnings to the special effects team.",
+                "Keanu Reeves often takes pay cuts so films can hire other actors they want.",
+                "Keanu Reeves secretly funds children's hospitals and doesn't attach his name to the donations.",
+                "It's possible that Keanu Reeves accidentally married Winona Ryder.",
+                "Keanu Reeves rides the subway regularly and gives up his seat to other passengers.",
+                "Keanu Reeves has been playing in a band called Dogstar since the early 1990s.",
+                "Keanu Reeves is an avid motorcyclist and co-founded a motorcycle company.",
+                "Keanu Reeves is trained in several martial arts including Judo, Jiu-Jitsu, and Wushu.",
+                "Keanu Reeves reads a book a day when he's filming."
+            ]
+        };
+
+        // Language settings
+        const languageSettings = {
+            en: {
+                title: "Icebreaker",
+                subtitle: "Start a conversation with an icebreaker.",
+                footer: "Start your day with bright conversations",
+                copyBtn: "Copy to clipboard",
+                copied: "Copied!"
+            },
+            fr: {
+                title: "Brise-Glace",
+                subtitle: "Commencez une conversation avec un brise-glace.",
+                footer: "Commencez votre journée avec des conversations brillantes",
+                copyBtn: "Copier",
+                copied: "Copié!"
+            },
+            jp: {
+                title: "会話術",
+                subtitle: "会話を始めるきっかけに使いましょう。",
+                footer: "会話で明るい一日を始めましょう",
+                copyBtn: "コピー",
+                copied: "コピーしました!"
+            },
+            keanu: {
+                title: "Keanu Mode",
+                subtitle: "Learn something amazing about Keanu Reeves.",
+                footer: "Keanu Reeves is breathtaking",
+                copyBtn: "Copy fact",
+                copied: "Copied!"
+            }
+        };
+
+        // DOM elements
+        const resultText = document.getElementById('result-text');
+        const mainTitle = document.getElementById('main-title');
+        const subtitle = document.getElementById('subtitle');
+        const footerText = document.getElementById('footer-text');
+        const copyBtn = document.getElementById('copy-btn');
+        const loader = document.querySelector('.loader');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        
+        // Buttons
+        const enButton = document.getElementById('en-button');
+        const frButton = document.getElementById('fr-button');
+        const jpButton = document.getElementById('jp-button');
+        const keanuButton = document.getElementById('keanu-button');
+        
+        // Current state
+        let currentLanguage = 'en';
+        let currentText = '';
+        
+        // Event listeners
+        enButton.addEventListener('click', () => generateIcebreaker('en'));
+        frButton.addEventListener('click', () => generateIcebreaker('fr'));
+        jpButton.addEventListener('click', () => generateIcebreaker('jp'));
+        keanuButton.addEventListener('click', () => generateIcebreaker('keanu'));
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        
+        // Functions
+        function showLoading() {
+            loader.style.display = 'flex';
+        }
+        
+        function hideLoading() {
+            loader.style.display = 'none';
+        }
+        
+        function generateIcebreaker(language) {
+            showLoading();
+            
+            // Simulate a brief loading time
+            setTimeout(() => {
+                const icebreakers = icebreakerData[language];
+                const randomIndex = Math.floor(Math.random() * icebreakers.length);
+                const icebreaker = icebreakers[randomIndex];
+                
+                resultText.textContent = icebreaker;
+                
+                if (language === 'jp') {
+                    resultText.classList.add('jp-text');
+                } else {
+                    resultText.classList.remove('jp-text');
+                }
+                
+                currentText = icebreaker;
+                currentLanguage = language;
+                
+                // Update language-specific UI
+                const settings = languageSettings[language];
+                mainTitle.textContent = settings.title;
+                subtitle.textContent = settings.subtitle;
+                footerText.textContent = settings.footer;
+                
+                // Update copy button tooltip
+                document.querySelector('.tooltip-text').textContent = settings.copyBtn;
+                
+                hideLoading();
+            }, 400);
+        }
+        
+        // Copy to clipboard functionality
+        function copyToClipboard() {
+            if (currentText) {
+                navigator.clipboard.writeText(currentText).then(() => {
+                    const tooltip = document.querySelector('.tooltip-text');
+                    const originalText = tooltip.textContent;
+                    
+                    // Show copied message
+                    tooltip.textContent = languageSettings[currentLanguage].copied;
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        tooltip.textContent = originalText;
+                        tooltip.style.visibility = 'hidden';
+                        tooltip.style.opacity = '0';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+        }
+        
+        // Dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkMode = body.classList.toggle('dark-mode');
+            
+            if (darkMode) {
+                // Apply dark mode styles
+                body.style.backgroundColor = '#2c3e50';
+                body.style.color = '#ecf0f1';
+                
+                document.querySelector('.window-frame').style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+                document.querySelector('.window-controls').style.backgroundColor = '#2c3e50';
+                document.querySelector('.window-controls').style.borderBottom = '1px solid #34495e';
+                document.querySelector('.window-title').style.color = '#bdc3c7';
+                document.querySelector('.content').style.backgroundColor = 'rgba(52, 73, 94, 0.7)';
+                document.querySelector('.result-container').style.backgroundColor = 'rgba(52, 73, 94, 0.9)';
+                document.querySelector('.result-text').style.color = '#ecf0f1';
+                document.querySelector('.footer').style.color = '#bdc3c7';
+                
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+            } else {
+                // Reset to light mode
+                body.style.backgroundColor = '#f9c5bd';
+                body.style.color = '#333';
+                
+                document.querySelector('.window-frame').style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                document.querySelector('.window-controls').style.backgroundColor = '#f1f1f1';
+                document.querySelector('.window-controls').style.borderBottom = '1px solid #ddd';
+                document.querySelector('.window-title').style.color = '#888';
+                document.querySelector('.content').style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+                document.querySelector('.result-container').style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+                document.querySelector('.result-text').style.color = '#333';
+                document.querySelector('.footer').style.color = '#555';
+                
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+            }
         }
     </script>
-    
-    <!-- Data JS -->
-    <script src="js/data.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
-    <script src="js/time-of-day.js"></script>
 </body>
 </html>
