@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icebreaker Generator</title>
+    <style>
+        /* Sunrise Color Palette */
+        :root {
+            --sunrise-pink: #f9c5bd;
+            --sunrise-orange: #f47b7b;
+            --sunrise-yellow: #ffd15c;
+            --sunrise-blue: #2193b0;
+            --sunrise-mint: #4acea3;
+            --sunrise-text: #333;
+            --sunrise-text-light: #fff;
+            --sunrise-background: #fff;
+            --sunrise-dark-background: #2d3748;
+            --sunrise-dark-text: #f5f5f5;
+            --sunrise-accent-light: #f5f5f5;
+            --sunrise-accent-dark: #444;
+            --sunrise-border-light: #eee;
+            --sunrise-border-dark: #555;
+            --sunrise-shadow: rgba(0,0,0,0.1);
+            --sunrise-shadow-dark: rgba(0,0,0,0.3);
+            
+            /* Window Frame Colors */
+            --window-frame-bg: linear-gradient(to right, #f8e9e9, #fdf4e7);
+            --window-control-red: #ff5f57;
+            --window-control-yellow: #febc2e;
+            --window-control-green: #28c840;
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--sunrise-pink);
+            background-image: linear-gradient(to bottom, #ffd6cc, var(--sunrise-pink));
+            margin: 0;
+            padding: 20px;
+            color: var(--sunrise-text);
+            transition: all 0.5s ease;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--sunrise-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px var(--sunrise-shadow);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Window Frame Styling */
+        .window-frame-top {
+            height: 28px;
+            background: var(--window-frame-bg);
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+        }
+        
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .window-close {
+            background-color: var(--window-control-red);
+        }
+        
+        .window-minimize {
+            background-color: var(--window-control-yellow);
+        }
+        
+        .window-maximize {
+            background-color: var(--window-control-green);
+        }
+        
+        header {
+            background-color: var(--sunrise-accent-light);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--sunrise-border-light);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--sunrise-orange), var(--sunrise-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        #en-button {
+            background-color: var(--sunrise-orange);
+            color: var(--sunrise-text-light);
+        }
+        
+        #fr-button {
+            background-color: var(--sunrise-mint);
+            color: var(--sunrise-text-light);
+        }
+        
+        #jp-button {
+            background-color: var(--sunrise-yellow);
+            color: var(--sunrise-text);
+        }
+        
+        #keanu-button {
+            background-color: var(--sunrise-blue);
+            color: var(--sunrise-text-light);
+        }
+        
+        .result {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--sunrise-border-light);
+        }
+        
+        #result-text {
+            font-size: 18px;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            bottom: -15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background-color: var(--sunrise-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--sunrise-border-light);
+            color: #777;
+            font-size: 14px;
+        }
+        
+        a {
+            color: var(--sunrise-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--sunrise-orange);
+            text-decoration: underline;
+        }
+        
+        .coffee-mug {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px; /* 2.5x larger */
+            height: 150px; /* 2.5x larger */
+            background-color: var(--sunrise-orange);
+            border-radius: 15px 15px 75px 75px;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .coffee-mug:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        
+        .coffee-handle {
+            position: absolute;
+            right: -45px;
+            top: 35px;
+            width: 45px;
+            height: 60px;
+            border: 10px solid var(--sunrise-orange);
+            border-left: none;
+            border-radius: 0 50px 50px 0;
+        }
+        
+        .coffee-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background-color: #6f4e37; /* Default coffee color */
+            border-radius: 0 0 75px 75px;
+        }
+        
+        .steam {
+            position: absolute;
+            top: -25px;
+            left: 50px;
+            width: 50px;
+            height: 60px;
+            opacity: 0.7;
+            filter: blur(8px);
+            animation: steaming 3s infinite;
+        }
+        
+        @keyframes steaming {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 0.4; }
+            100% { transform: translateY(-40px) scale(0.8); opacity: 0; }
+        }
+        
+        .steam:before,
+        .steam:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .steam:after {
+            bottom: -15px;
+            left: 15px;
+        }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--sunrise-accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 10px var(--sunrise-shadow);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Dark mode */
+        body.dark-mode {
+            background-color: var(--sunrise-dark-background);
+            background-image: linear-gradient(to bottom, #1a202c, var(--sunrise-dark-background));
+            color: var(--sunrise-dark-text);
+        }
+        
+        body.dark-mode .container {
+            background-color: #333;
+            box-shadow: 0 4px 15px var(--sunrise-shadow-dark);
+        }
+        
+        body.dark-mode .window-frame-top {
+            background: linear-gradient(to right, #2d3748, #2c3e50);
+        }
+        
+        body.dark-mode h1 {
+            background: linear-gradient(135deg, var(--sunrise-orange), var(--sunrise-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--sunrise-accent-dark);
+            border-bottom: 1px solid var(--sunrise-border-dark);
+        }
+        
+        body.dark-mode .result {
+            background-color: rgba(66, 66, 66, 0.8);
+            color: var(--sunrise-dark-text);
+            border: 1px solid var(--sunrise-border-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        
+        body.dark-mode footer {
+            border-top: 1px solid var(--sunrise-border-dark);
+            color: #aaa;
+        }
+        
+        body.dark-mode a {
+            color: #7a96e0;
+        }
+        
+        body.dark-mode a:hover {
+            color: var(--sunrise-yellow);
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            background-color: var(--sunrise-accent-dark);
+            color: var(--sunrise-dark-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">☀️</div>
+    
+    <div class="container">
+        <!-- Window frame with controls -->
+        <div class="window-frame-top">
+            <div class="window-controls">
+                <div class="window-close"></div>
+                <div class="window-minimize"></div>
+                <div class="window-maximize"></div>
+            </div>
+        </div>
+        
+        <header>
+            <h1 id="title">Icebreaker</h1>
+        </header>
+        
+        <main>
+            <p id="subtitle">Start a conversation with an icebreaker.</p>
+            
+            <div class="buttons">
+                <button id="en-button">English</button>
+                <button id="fr-button">Français</button>
+                <button id="jp-button">日本語</button>
+                <button id="keanu-button">Keanu Mode</button>
+            </div>
+            
+            <div class="result">
+                <p id="result-text">Click any button above to generate an icebreaker!</p>
+                <button onclick="copyToClipboard()" class="copy-btn" title="Copy to clipboard">⎘</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 <a href="https://github.com/lingasc">lingasc</a> | <span id="footer-text">Start your day with bright conversations</span></p>
+        </footer>
+    </div>
+    
+    <div class="coffee-mug" onclick="changeMugColor()">
+        <div class="coffee-handle"></div>
+        <div class="coffee-content" ondblclick="changeCoffeeType()"></div>
+        <div class="steam"></div>
+    </div>
+    
+    <script>
+        // Comprehensive icebreaker data from breakfast_hour.csv
+        const icebreaker_data = {
+            en: {
+                title: "Icebreaker",
+                subtitle: "Start a conversation with an icebreaker.",
+                footer: "Start your day with bright conversations",
+                bad_options: [
+                    "jump into a live volcano",
+                    "jump into a whale's mouth",
+                    "get stuck in an elevator with your ex",
+                    "get bird poo on your head",
+                    "forget your most cherished memories",
+                    "live in a soap opera",
+                    "live in a scary movie",
+                    "smell like a rotten onion",
+                    "get caught in the rain without an umbrella",
+                    "be incurably annoying",
+                    "be hopelessly boring",
+                    "be covered in centipedes",
+                    "be covered in spiders",
+                    "be freezing",
+                    "be sweltering",
+                    "look like a giant thumb",
+                    "be taken for granted",
+                    "get locked out of your house",
+                    "get locked into a walk-in freezer",
+                    "be adrift in a dinghy with a ferocious tiger",
+                    "fight an angry bear",
+                    "fight an angry bull",
+                    "step on Legos",
+                    "become a cautionary tale",
+                    "become an urban legend"
+                ],
+                good_options: [
+                    "be able to swim like a fish",
+                    "be able to fly like a bird",
+                    "become a master of martial arts",
+                    "stop aging",
+                    "have super strength",
+                    "move things with your mind",
+                    "be fluent in every language",
+                    "know how to play every musical instrument",
+                    "travel to the past",
+                    "travel to the future",
+                    "be a hero",
+                    "be an inspiration",
+                    "be able to speak to animals",
+                    "be the world's fastest human",
+                    "vacation on a beach",
+                    "vacation in the mountains",
+                    "discover a new life form on earth",
+                    "discover an alien life form",
+                    "be a celebrity",
+                    "be a billionaire"
+                ],
+                open_ended: [
+                    "What's your favorite breakfast food?",
+                    "What's your favorite lunch food?",
+                    "What's your favorite dinner food?",
+                    "What's your favorite snack?",
+                    "What's your favorite cereal?",
+                    "What's your favorite color?",
+                    "What's your favorite book?",
+                    "What's your favorite movie?",
+                    "What's your favorite TV series?",
+                    "If you could have dinner with any historical figure, who would it be and why?",
+                    "What's the most interesting place you've ever visited?",
+                    "If you could instantly become an expert in something, what would it be?",
+                    "What's your favorite book or movie and why does it resonate with you?",
+                    "If you could live in any fictional world, which would you choose?",
+                    "What's your favorite pizza topping?",
+                    "What's your favorite sport?",
+                    "What's your favorite music?",
+                    "What's your favorite vacation spot?",
+                    "What's your favorite pastime?"
+                ]
+            },
+            fr: {
+                title: "Brise-Glace",
+                subtitle: "Commencez une conversation avec un brise-glace.",
+                footer: "Commencez votre journée avec des conversations brillantes",
+                mauvaises_prefs: [
+                    "sauter dans un volcan actif",
+                    "sauter dans la gueule d'une baleine",
+                    "être coincé dans un ascenseur avec votre ex",
+                    "recevoir des crottes d'oiseau sur la tête",
+                    "oublier vos souvenirs les plus chers",
+                    "vivre dans un feuilleton",
+                    "vivre dans un film d'horreur",
+                    "sentir comme un oignon pourri",
+                    "être pris sous la pluie sans parapluie",
+                    "être incurablement irritant",
+                    "être désespérément ennuyeux",
+                    "être couvert de mille-pattes",
+                    "être couvert d'araignées",
+                    "avoir froid",
+                    "avoir chaud"
+                ],
+                bonnes_prefs: [
+                    "être capable de nager comme un poisson",
+                    "être capable de voler comme un oiseau",
+                    "devenir un maître des arts martiaux",
+                    "arrêter de vieillir",
+                    "avoir une force surhumaine",
+                    "déplacer des objets par la pensée",
+                    "être fluent dans toutes les langues",
+                    "savoir jouer de tous les instruments de musique",
+                    "voyager dans le passé",
+                    "voyager dans le futur",
+                    "être un héros",
+                    "être une source d'inspiration",
+                    "être capable de parler aux animaux",
+                    "être l'être humain le plus rapide du monde",
+                    "passer des vacances sur une plage"
+                ],
+                ouvertes: [
+                    "Quel est votre plat de petit-déjeuner préféré ?",
+                    "Quel est votre plat de déjeuner préféré ?",
+                    "Quel est votre plat de dîner préféré ?",
+                    "Quel est votre en-cas préféré ?",
+                    "Quel est votre céréale préférée ?",
+                    "Quelle est votre couleur préférée ?",
+                    "Quel est votre livre préféré ?",
+                    "Quel est votre film préféré ?",
+                    "Quelle est votre série télévisée préférée ?",
+                    "Si vous pouviez dîner avec n'importe quelle figure historique, qui choisiriez-vous et pourquoi?",
+                    "Quel est l'endroit le plus intéressant que vous ayez jamais visité?",
+                    "Si vous pouviez instantanément devenir expert en quelque chose, que serait-ce?",
+                    "Quel est votre livre ou film préféré et pourquoi vous touche-t-il?",
+                    "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous?"
+                ]
+            },
+            jp: {
+                title: "会話術",
+                subtitle: "会話を始めるきっかけに使いましょう。",
+                footer: "会話で明るい一日を始めましょう",
+                bad_jp: [
+                    "生きた火山に飛び込む",
+                    "クジラの口に飛び込む",
+                    "元カレ・元カノとエレベーターに閉じ込められる",
+                    "頭に鳥の糞が落ちる",
+                    "最も大切な思い出を忘れる",
+                    "昼ドラの中で暮らす",
+                    "ホラー映画の中で暮らす",
+                    "腐った玉ねぎの匂いがする",
+                    "傘なしで雨に降られる",
+                    "治らないほど迷惑な人物になる",
+                    "希望がないほど退屈な人物になる",
+                    "ムカデで覆われる",
+                    "クモで覆われる",
+                    "凍えるような寒さの中にいる",
+                    "蒸し暑さの中にいる"
+                ],
+                good_jp: [
+                    "魚のように泳げる",
+                    "鳥のように飛べる",
+                    "武道の達人になる",
+                    "老化を止める",
+                    "超人的な力を持つ",
+                    "物を心で動かす",
+                    "すべての言語を流暢に話せる",
+                    "すべての楽器を演奏できる",
+                    "過去に旅行する",
+                    "未来に旅行する",
+                    "ヒーローになる",
+                    "人々に影響を与える人物になる",
+                    "動物と話せる",
+                    "世界最速の人間になる",
+                    "ビーチでバカンスを過ごす"
+                ],
+                open_jp: [
+                    "あなたの好きな朝食は何ですか？",
+                    "あなたの好きな昼食は何ですか？",
+                    "あなたの好きな夕食は何ですか？",
+                    "あなたの好きなおやつは何ですか？",
+                    "あなたの好きなシリアルは何ですか？",
+                    "あなたの好きな色は何ですか？",
+                    "あなたの好きな本は何ですか？",
+                    "あなたの好きな映画は何ですか？",
+                    "あなたの好きなテレビシリーズは何ですか？",
+                    "歴史上の人物と夕食を共にできるとしたら、誰を選びますか？また、その理由は？",
+                    "今まで訪れた中で最も興味深い場所はどこですか？",
+                    "一瞬でエキスパートになれるとしたら、何を選びますか？",
+                    "あなたのお気に入りの本や映画は何ですか？それはなぜあなたの心に響くのですか？",
+                    "どんなフィクションの世界に住むことができるとしたら、どこを選びますか？"
+                ]
+            },
+            keanu: {
+                title: "Keanu Mode",
+                subtitle: "Learn something amazing about Keanu Reeves.",
+                footer: "Keanu Reeves is breathtaking",
+                keanu_trivia: [
+                    "Despite—or perhaps because of—his multicultural background, Keanu Reeves has never become an American citizen.",
+                    "Hockey kept Keanu busy as a kid.",
+                    "When Keanu was a kid, Alice Cooper used to hang out at his house.",
+                    "One of Reeves's earliest roles was in a Coca-Cola commercial.",
+                    "Keanu almost renamed himself "Chuck Spadina."",
+                    "Reeves has a deep love of motorcycles.",
+                    "Keanu has an extensive history of motorcycle-related injuries.",
+                    "In addition to his performances in River's Edge, Dangerous Liaisons, and Parenthood, Keanu Reeves moonlighted in a music video.",
+                    "Keanu Reeves has been willing to defer his salary to get other actors in his movies.",
+                    "Keanu Reeves once helped a stranded stranger by driving her 50 miles out of his way.",
+                    "Keanu Reeves gave away a significant portion of his Matrix earnings to the special effects team.",
+                    "Keanu Reeves often takes pay cuts so films can hire other actors they want.",
+                    "Keanu Reeves secretly funds children's hospitals and doesn't attach his name to the donations.",
+                    "It's possible that Keanu Reeves accidentally married Winona Ryder."
+                ]
+            }
+        };
+        
+        // DOM elements
+        const title = document.getElementById('title');
+        const subtitle = document.getElementById('subtitle');
+        const resultText = document.getElementById('result-text');
+        const footerText = document.getElementById('footer-text');
+        const coffeeMug = document.querySelector('.coffee-mug');
+        const coffeeMugHandle = document.querySelector('.coffee-handle');
+        const coffeeContent = document.querySelector('.coffee-content');
+        
+        // Current state
+        let currentLanguage = 'en';
+        let currentText = '';
+        let prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let coffeeType = 'black'; // Default coffee type
+        
+        // Initialize dark mode based on system preference
+        if (prefersDarkMode) {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = '🌙';
+        }
+        
+        // Button click handlers
+        document.getElementById('en-button').addEventListener('click', () => generateIcebreaker('en'));
+        document.getElementById('fr-button').addEventListener('click', () => generateIcebreaker('fr'));
+        document.getElementById('jp-button').addEventListener('click', () => generateIcebreaker('jp'));
+        document.getElementById('keanu-button').addEventListener('click', () => generateIcebreaker('keanu'));
+        
+        // Generate icebreaker
+        function generateIcebreaker(language) {
+            console.log("Generating icebreaker for language:", language);
+            try {
+                const data = icebreaker_data[language];
+                if (!data) {
+                    console.error("No data found for language:", language);
+                    resultText.textContent = "Error: No data available for this language.";
+                    return;
+                }
+                
+                currentLanguage = language;
+                
+                // Update the UI language
+                title.textContent = data.title;
+                subtitle.textContent = data.subtitle;
+                footerText.textContent = data.footer;
+                
+                // Generate icebreaker based on question type
+                let icebreaker = '';
+                
+                if (language === 'keanu') {
+                    // For Keanu mode, just use a random Keanu fact
+                    icebreaker = getRandomItem(data.keanu_trivia);
+                } else {
+                    // For other languages, randomly choose a question type
+                    const questionTypes = ['bad', 'good', 'open'];
+                    const questionType = getRandomItem(questionTypes);
+                    console.log("Selected question type:", questionType);
+                    
+                    if (questionType === 'bad') {
+                        // Generate a "Would you rather" with bad options
+                        const badOptionsKey = 
+                            language === 'en' ? 'bad_options' : 
+                            language === 'fr' ? 'mauvaises_prefs' : 
+                            'bad_jp';
+                            
+                        console.log("Using options from:", badOptionsKey);
+                        
+                        if (!data[badOptionsKey] || data[badOptionsKey].length < 2) {
+                            console.error("Not enough bad options for:", language);
+                            // Fallback to open-ended
+                            const openEndedKey = 
+                                language === 'en' ? 'open_ended' : 
+                                language === 'fr' ? 'ouvertes' : 
+                                'open_jp';
+                            icebreaker = getRandomItem(data[openEndedKey]);
+                        } else {
+                            const options = getRandomItems(data[badOptionsKey], 2);
+                            
+                            if (language === 'en') {
+                                icebreaker = `Would you rather ${options[0]}, or ${options[1]}?`;
+                            } else if (language === 'fr') {
+                                icebreaker = `Vous préféreriez ${options[0]}, ou ${options[1]}?`;
+                            } else { // Japanese
+                                icebreaker = `あなたは ${options[0]} と ${options[1]} のどちらを好みますか？`;
+                            }
+                        }
+                    } 
+                    else if (questionType === 'good') {
+                        // Generate a "Would you rather" with good options
+                        const goodOptionsKey = 
+                            language === 'en' ? 'good_options' : 
+                            language === 'fr' ? 'bonnes_prefs' : 
+                            'good_jp';
+                            
+                        console.log("Using options from:", goodOptionsKey);
+                        
+                        if (!data[goodOptionsKey] || data[goodOptionsKey].length < 2) {
+                            console.error("Not enough good options for:", language);
+                            // Fallback to open-ended
+                            const openEndedKey = 
+                                language === 'en' ? 'open_ended' : 
+                                language === 'fr' ? 'ouvertes' : 
+                                'open_jp';
+                            icebreaker = getRandomItem(data[openEndedKey]);
+                        } else {
+                            const options = getRandomItems(data[goodOptionsKey], 2);
+                            
+                            if (language === 'en') {
+                                icebreaker = `Would you rather ${options[0]}, or ${options[1]}?`;
+                            } else if (language === 'fr') {
+                                icebreaker = `Vous préféreriez ${options[0]}, ou ${options[1]}?`;
+                            } else { // Japanese
+                                icebreaker = `あなたは ${options[0]} と ${options[1]} のどちらを好みますか？`;
+                            }
+                        }
+                    } 
+                    else { // open-ended
+                        const openEndedKey = 
+                            language === 'en' ? 'open_ended' : 
+                            language === 'fr' ? 'ouvertes' : 
+                            'open_jp';
+                            
+                        console.log("Using options from:", openEndedKey);
+                        
+                        if (!data[openEndedKey] || data[openEndedKey].length === 0) {
+                            console.error("No open-ended questions for:", language);
+                            icebreaker = "No questions available for this language.";
+                        } else {
+                            icebreaker = getRandomItem(data[openEndedKey]);
+                        }
+                    }
+                }
+                
+                console.log("Generated icebreaker:", icebreaker);
+                
+                // Update the result text
+                resultText.textContent = icebreaker;
+                currentText = icebreaker;
+                
+                // Update button color
+                document.querySelector('.copy-btn').style.backgroundColor = 
+                    language === 'en' ? 'var(--sunrise-orange)' : 
+                    language === 'fr' ? 'var(--sunrise-mint)' : 
+                    language === 'jp' ? 'var(--sunrise-yellow)' : 
+                    'var(--sunrise-blue)';
+            } catch (error) {
+                console.error("Error generating icebreaker:", error);
+                resultText.textContent = "An error occurred. Please try again.";
+            }
+        }
+        
+        // Helper functions for random selection
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        
+        function getRandomItems(array, count) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+        
+        // Copy to clipboard
+        function copyToClipboard() {
+            if (currentText && currentText !== 'Loading...' && currentText !== 'Failed to load icebreaker. Please try again.') {
+                navigator.clipboard.writeText(currentText)
+                    .then(() => {
+                        const copyBtn = document.querySelector('.copy-btn');
+                        copyBtn.textContent = '✓';
+                        copyBtn.title = 'Copied!';
+                        setTimeout(() => {
+                            copyBtn.textContent = '⎘';
+                            copyBtn.title = 'Copy to clipboard';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+            }
+        }
+        
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = '🌙';
+            } else {
+                darkModeToggle.textContent = '☀️';
+            }
+        }
+        
+        // Change mug color
+        function changeMugColor() {
+            const colors = ['#d32f2f', '#388e3c', '#1976d2', '#ffa000', '#7b1fa2', '#e64a19', '#00897b'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            coffeeMug.style.backgroundColor = randomColor;
+            coffeeMugHandle.style.borderColor = randomColor;
+        }
+        
+        // Change coffee type
+        function changeCoffeeType() {
+            switch (coffeeType) {
+                case 'black':
+                    // Change to espresso
+                    coffeeContent.style.backgroundColor = '#3c2415';
+                    coffeeContent.style.height = '40%';
+                    coffeeType = 'espresso';
+                    break;
+                case 'espresso':
+                    // Change to latte
+                    coffeeContent.style.backgroundColor = '#c6a47f';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'latte';
+                    break;
+                case 'latte':
+                    // Change to cappuccino
+                    coffeeContent.style.backgroundColor = '#b08b63';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'cappuccino';
+                    break;
+                case 'cappuccino':
+                    // Change to black coffee
+                    coffeeContent.style.backgroundColor = '#6f4e37';
+                    coffeeContent.style.height = '70%';
+                    coffeeType = 'black';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
