@@ -1,6 +1,6 @@
 ![](https://y.yarn.co/caa9c31d-b640-40d0-8a9a-0cf586412dd8_text.gif)
 
-# [Icebreaker Generator MVP]((https://lingasc.github.io/icebreaker-generator-thanks/)   
+# [Icebreaker Generator MVP](https://lingasc.github.io/icebreaker-generator-thanks/)   
 ### Surprise!  
   
 To thank you for the past three months, I've taken what I've learned from DSB-210 and written an [icebreaker generator](https://lingasc.github.io/icebreaker-generator-thanks/) capable of generating 5,724 unique, safe-for-work icebreakers, to streamline the task of finding and copying an icebreaker to be pasted into a chat.  
