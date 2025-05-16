@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (language === 'keanu') {
             // Update language indicator
             langIndicator.classList.add('lang-keanu');
-            langIndicator.innerHTML = '<img src="img/flags/keanu.png" alt="Keanu Reeves" title="Keanu Mode">';
+            langIndicator.innerHTML = '<img src="img/flags/keanu.png" alt="Keanu Reeves" title="Keanu Facts">';
             
             // Update clipboard button
             copyBtn.classList.add('lang-keanu');
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 subheading.textContent = greeting + 'Learn something amazing about Keanu Reeves.';
                 subheading.classList.add('keanu-subheading');
                 // Update footer
-                footer.innerHTML = '© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | Keanu Reeves gives up his seat to people on the subway!';
+                footer.innerHTML = '© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | Keanu Reeves is breathtaking';
             }
             else {
                 // Default to English

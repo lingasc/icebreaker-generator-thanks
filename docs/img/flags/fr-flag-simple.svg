@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- Simple French flag -->
+  
+  <!-- Blue stripe -->
+  <rect width="100" height="200" fill="#0055A4"/>
+  
+  <!-- White stripe -->
+  <rect x="100" width="100" height="200" fill="#FFFFFF"/>
+  
+  <!-- Red stripe -->
+  <rect x="200" width="100" height="200" fill="#EF4135"/>
+</svg>

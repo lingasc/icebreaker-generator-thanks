@@ -336,10 +336,10 @@ const icebreakersData = {
         "In addition to his performances in River's Edge, Dangerous Liaisons, and Parenthood, Keanu Reeves moonlighted in a music video.",
         "Keanu Reeves has been willing to defer his salary to get other actors in his movies.",
         "Keanu Reeves's commercial success has resulted in him subsidizing more than just a few high-profile casting choices.",
-        "Keanu Reeves's close friendship with River Phoenix led to them co-starring in My Own Private Idaho.",
+        "Keanu Reeves's close friendship with River Phoenix led to them co-starring in My Own Privavous Idaho.",
         "Keanu Reeves has been injured or sidelined by illness multiple times during shooting.",
         "Keanu Reeves says turning down Speed 2 got him blacklisted from Fox for 10 years.",
-        "Keanu Reeves only became a part of the movie Keanu at the last minute.",
+        "Keanu Reeves only became a part of Keanu at the last minute.",
         "It's possible that Keanu Reeves accidentally married Winona Ryder.",
         "Without Keanu Reeves, Weezer might not exist.",
         "Keanu Reeves has been booed offstage.",
@@ -356,7 +356,7 @@ const icebreakersData = {
         "Keanu Reeves performs all his own stunts.",
         "Keanu Reeves has a black belt in martial arts.",
         "Keanu Reeves turned down the role of Marvel's Captain Marvel.",
-        "Keanu is an avid reader.",
+        "He is an avid reader.",
         "Keanu Reeves is a vegetarian.",
         "Keanu co-founded a production company called Company Films."
     ]
