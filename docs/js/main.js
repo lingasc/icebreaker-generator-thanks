@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 subheading.textContent = greeting + 'Learn something amazing about Keanu Reeves.';
                 subheading.classList.add('keanu-subheading');
                 // Update footer
-                footer.innerHTML = '© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | Keanu Reeves is gives up his seat to people on the subway!';
+                footer.innerHTML = '© 2025 <a href="https://github.com/lingasc" target="_blank" rel="noopener noreferrer">lingasc</a> | Keanu Reeves gives up his seat to people on the subway!';
             }
             else {
                 // Default to English
