@@ -12,6 +12,8 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
     darkModeToggle.textContent = '🌙';
+} else {
+    darkModeToggle.textContent = '☀️';
 }
 
 // Toggle dark mode
@@ -127,17 +129,17 @@ function generateJapanese() {
     
     let icebreaker;
     if (type === 0) {
-        // Bad options
+        // Bad options - using warui instead of bad_jp
         const options = getRandomItems(icebreaker_data.jp.warui, 2);
         icebreaker = `どちらがいいですか？${options[0]}か、それとも${options[1]}か？`;
     } else if (type === 1) {
-        // Good options
+        // Good options - using yoi instead of good_jp
         const options = getRandomItems(icebreaker_data.jp.yoi, 2);
         icebreaker = `どちらがいいですか？${options[0]}か、それとも${options[1]}か？`;
     } else {
-        // Open ended
-        const randomIndex = Math.floor(Math.random() * icebreaker_data.jp.open.length);
-        icebreaker = icebreaker_data.jp.open[randomIndex];
+        // Open ended - using open instead of open_jp
+        const randomIndex = Math.floor(Math.random() * icebreaker_data.jp.opun.length);
+        icebreaker = icebreaker_data.jp.opun[randomIndex];
     }
     
     resultText.textContent = icebreaker;
@@ -150,22 +152,52 @@ function generateKeanu() {
     currentLanguage = 'keanu';
     copyBtn.style.backgroundColor = '#2193b0';
     
-    const randomIndex = Math.floor(Math.random() * icebreaker_data.keanu.length);
-    const fact = icebreaker_data.keanu[randomIndex];
+    // Using keanu.keanu to choose Keanu facts at random
+    const randomIndex = Math.floor(Math.random() * icebreaker_data.keanu.keanu.length);
+    const fact = icebreaker_data.keanu.keanu[randomIndex];
     
     resultText.textContent = fact;
     currentText = fact;
 }
 
-// Copy to clipboard
+// Copy to clipboard with improved hover text
 function copyToClipboard() {
     if (!currentText) return;
     
     navigator.clipboard.writeText(currentText)
         .then(() => {
+            // Change button to green checkmark
+            const originalColor = copyBtn.style.backgroundColor;
             copyBtn.textContent = '✓';
+            copyBtn.style.backgroundColor = '#388e3c'; // Green from the color palette
+            
+            // Add a custom attribute to change hover text
+            copyBtn.setAttribute('data-copied', 'true');
+            
+            // Add CSS for the "Copied!" hover text
+            const style = document.createElement('style');
+            style.textContent = `
+                .copy-btn[data-copied="true"]:hover:before {
+                    content: "Copied!";
+                    position: absolute;
+                    top: -40px;
+                    right: -30px;
+                    background-color: #333;
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Reset after 2 seconds
             setTimeout(() => {
                 copyBtn.textContent = '⎘';
+                copyBtn.style.backgroundColor = originalColor;
+                copyBtn.removeAttribute('data-copied');
+                document.head.removeChild(style);
             }, 2000);
         })
         .catch(err => {
@@ -204,3 +236,32 @@ function changeCoffeeType() {
         coffee.style.height = '70%';
     }
 }
+
+// Add event listeners when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Make sure the dark mode toggle has the correct event listener
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+    
+    // Ensure all buttons have their event listeners
+    const englishBtn = document.getElementById('english-btn');
+    const frenchBtn = document.getElementById('french-btn');
+    const japaneseBtn = document.getElementById('japanese-btn');
+    const keanuBtn = document.getElementById('keanu-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    
+    if (englishBtn) englishBtn.addEventListener('click', generateEnglish);
+    if (frenchBtn) frenchBtn.addEventListener('click', generateFrench);
+    if (japaneseBtn) japaneseBtn.addEventListener('click', generateJapanese);
+    if (keanuBtn) keanuBtn.addEventListener('click', generateKeanu);
+    if (copyBtn) copyBtn.addEventListener('click', copyToClipboard);
+    
+    // Coffee mug interactions
+    const coffeeMug = document.querySelector('.coffee-mug');
+    const coffeeContent = document.querySelector('.coffee-content');
+    
+    if (coffeeMug) coffeeMug.addEventListener('click', changeMugColor);
+    if (coffeeContent) coffeeContent.addEventListener('dblclick', changeCoffeeType);
+});
