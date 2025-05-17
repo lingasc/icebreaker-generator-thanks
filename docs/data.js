@@ -244,7 +244,7 @@ const icebreaker_data = {
             "être fluent dans toutes les langues",
             "savoir jouer de tous les instruments de musique",
             "voyager dans le passé",
-            "voyager dans le futur
+            "voyager dans le futur",
             "être un héros",
             "être une source d'inspiration",
             "être capable de parler aux animaux",
