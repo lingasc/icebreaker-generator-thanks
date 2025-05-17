@@ -1,9 +1,11 @@
 // Comprehensive icebreaker data from breakfast_hour.csv
 const icebreaker_data = {
+    // All the English icebreaker options
     en: {
         title: "Icebreaker",
         subtitle: "Start a conversation with an icebreaker.",
         footer: "Start your day with bright conversations",
+        // Options for negative "Would you rather?" questions in English
         bad_options: [
             "jump into a live volcano",
             "jump into a whale's mouth",
@@ -58,6 +60,7 @@ const icebreaker_data = {
             "never forget every unpleasant moment of your life",
             "get flattened by an exceptionally slow steamroller"
         ],
+        // Options for positive "Would you rather?" questions in English
         good_options: [
             "be able to swim like a fish",
             "be able to fly like a bird",
@@ -112,6 +115,7 @@ const icebreaker_data = {
             "bring back the woolly mammoth",
             "build the perfect robot"
         ],
+        // All open-ended icebreaker questions in English
         open_ended: [
             "What's your favorite breakfast food?",
             "What's your favorite lunch food?",
@@ -151,7 +155,7 @@ const icebreaker_data = {
             "Tea or coffee?",
             "Which actor would play you in a movie about your life?",
             "What's your spirit animal?",
-            "How many languages can you speak?",
+            "How many languages can you speak?", // Fixed missing comma here
             "Pineapple on pizza: yum or yuck?",
             "Do you tip based on the subtotal, or the total after tax?",
             "Share your best recipe.",
@@ -176,10 +180,12 @@ const icebreaker_data = {
             "What's the last movie you watched?"
         ]
     },
+    // All French icebreaker components
     fr: {
         title: "Brise-Glace",
         subtitle: "Commencez une conversation avec un brise-glace.",
         footer: "Commencez votre journée avec des conversations brillantes",
+        // Options for negative "Would you rather?" questions in French
         mauvaises_prefs: [
             "sauter dans un volcan actif",
             "sauter dans la gueule d'une baleine",
@@ -209,11 +215,11 @@ const icebreaker_data = {
             "combattre un essaim de frelons meurtriers",
             "combattre un essaim d'araignées veuves noires",
             "recevoir mille coupures de papier",
-            "être victime d’une arnaque",
+            "être victime d'une arnaque",
             "avoir les pires collègues du monde",
             "avoir le pire patron du monde",
             "vous coincer le doigt dans une porte",
-            "vous cogner l’orteil",
+            "vous cogner l'orteil",
             "être échoué au milieu de l'océan",
             "que la batterie de votre téléphone meure",
             "être attaqué par un T-Rex",
@@ -234,6 +240,7 @@ const icebreaker_data = {
             "ne jamais oublier chaque moment désagréable de votre vie",
             "vous faire aplatir par un rouleau compresseur exceptionnellement lent"
         ],
+        // Options for positive "Would you rather?" questions in French
         bonnes_prefs: [
             "être capable de nager comme un poisson",
             "être capable de voler comme un oiseau",
@@ -288,6 +295,7 @@ const icebreaker_data = {
             "ramener le mammouth laineux",
             "construire le robot parfait"
         ],
+        // Open-ended questions in French
         ouvertes: [
             "Quel est votre plat de petit-déjeuner préféré ?",
             "Quel est votre plat de déjeuner préféré ?",
@@ -352,11 +360,13 @@ const icebreaker_data = {
             "Quel est le dernier film que vous avez regardé ?"
         ]
     },
+    // All Japanese icebreaker components
     jp: {
         title: "会話術",
         subtitle: "会話を始めるきっかけに使いましょう。",
         footer: "会話で明るい一日を始めましょう",
-        bad_jp: [
+        // Warui = "bad" in Japanese, as in bad options
+        warui: [
             "生きた火山に飛び込む",
             "クジラの口に飛び込む",
             "元カレ・元カノとエレベーターに閉じ込められる",
@@ -410,7 +420,8 @@ const icebreaker_data = {
             "人生のすべての不快な瞬間を決して忘れない",
             "非常に遅いローラーで押しつぶされる"
         ],
-        good_jp: [
+        // Yoi = "good", as in good options
+        yoi: [
             "魚のように泳げる",
             "鳥のように飛べる",
             "武道の達人になる",
@@ -464,7 +475,8 @@ const icebreaker_data = {
             "マンモスを復活させる",
             "完璧なロボットを作る"
         ],
-        open_jp: [
+        // Opun = "open" (loanword), Open-ended Japanese icebreakers
+        opun: [
             "あなたの好きな朝食は何ですか？",
             "あなたの好きな昼食は何ですか？",
             "あなたの好きな夕食は何ですか？",
@@ -524,11 +536,12 @@ const icebreaker_data = {
             "あなたが最後に見た映画は何ですか？"
         ]
     },
+    // All Keanu trivia for Keanu Mode
     keanu: {
         title: "Keanu Mode",
         subtitle: "Learn something amazing about Keanu Reeves.",
         footer: "Keanu Reeves gives up his seat to pregnant women on the subway!",
-        keanu_trivia: [
+        keanu: [
             "Despite—or perhaps because of—his multicultural background, Keanu Reeves has never become an American citizen.",
             "Hockey kept Keanu busy as a kid.",
             "When Keanu was a kid, Alice Cooper used to hang out at his house.",
@@ -538,12 +551,12 @@ const icebreaker_data = {
             "Keanu has an extensive history of motorcycle-related injuries.",
             "In addition to his performances in River's Edge, Dangerous Liaisons, and Parenthood, Keanu Reeves moonlighted in a music video.",
             "Keanu Reeves has been willing to defer his salary to get other actors in his movies.",
-            "Keanu Reeves’s commercial success has resulted in him subsidizing more than just a few high-profile casting choices.",
-            "Keanu Reeves’s close friendship with River Phoenix led to them co-starring in My Own Private Idaho.",
+            "Keanu Reeves's commercial success has resulted in him subsidizing more than just a few high-profile casting choices.",
+            "Keanu Reeves's close friendship with River Phoenix led to them co-starring in My Own Private Idaho.",
             "Keanu Reeves has been injured or sidelined by illness multiple times during shooting.",
             "Keanu Reeves says turning down Speed 2 got him blacklisted from Fox for 10 years.",
             "Keanu Reeves only became a part of the movie Keanu at the last minute.",
-            "It’s possible that Keanu Reeves accidentally married Winona Ryder.",
+            "It's possible that Keanu Reeves accidentally married Winona Ryder.",
             "Without Keanu Reeves, Weezer might not exist.",
             "Keanu Reeves has been booed offstage.",
             "Keanu Reeves was tricked into appearing in The Watcher.",
@@ -551,34 +564,34 @@ const icebreaker_data = {
             "Keanu Reeves has a recurring role on a tv show you've probably never heard of.",
             "Keanu Reeves has published books of his own poetry.",
             "Keanu Reeves has always actively participated in the physical preparation required for his roles.",
-            "Keanu Reeves’s passion for—and recognition of—other storytellers’ passion—has led to many of his iconic roles.",
+            "Keanu Reeves's passion for—and recognition of—other storytellers' passion—has led to many of his iconic roles.",
             "The John Wick franchise might not exist without The Matrix.",
             "Without John Wick, there might not have been a Bill & Ted Face the Music.",
             "Keanu Reeves is fluent in English, French, German, and Italian.",
             "Keanu Reeves is a Canadian citizen but born in Lebanon. He has English, Chinese, Irish, Native Hawaiian, and Portuguese ancestry.",
             "Keanu Reeves performs all his own stunts.",
             "Keanu Reeves has a black belt in martial arts.",
-            "Keanu Reeves turned down the role of Marvel’s Captain Marvel.",
+            "Keanu Reeves turned down the role of Marvel's Captain Marvel.",
             "Keanu is an avid reader.",
             "Keanu Reeves is a vegetarian.",
             "Keanu co-founded a production company called Company Films.",
             "Keanu Reeves has directed a film.",
-            "He starred in a successful theater production of “Hamlet.”",
+            "He starred in a successful theater production of "Hamlet."",
             "Reeves has appeared in music videos.",
             "Keanu has a passion for photography.",
             "Keanu Reeves has a star on the Hollywood Walk of Fame.",
             "Keanu Reeves is an advocate for mental health awareness.",
             "Keanu Reeves became the highest paid actor for a single production for reprising his Matrix role in its 2003 sequels Reloaded and Revolutions.",
-            "Reeves' first name “Keanu” means “cool breeze over the mountains” and was derived from the name of his great-great-uncle Keaweaheulu.",
+            "Reeves' first name "Keanu" means "cool breeze over the mountains" and was derived from the name of his great-great-uncle Keaweaheulu.",
             "Reeves' mother was a showgirl and costume designer, and his father was a drug dealer.",
-            "Reeves was a successful ice hockey goalie which earned him the nickname “The Wall.”",
+            "Reeves was a successful ice hockey goalie which earned him the nickname "The Wall."",
             "Keanu Reeves wrote a book of sad poems titled An Ode to Happiness as a joke after a photo of him looking sad and eating a sandwich alone on a bench went viral.",
-            "There is a movement called “Keanu Code” which claims that you can know about the hidden forces that control and influence the world by studying the movies Reeves starred in.",
+            "There is a movement called "Keanu Code" which claims that you can know about the hidden forces that control and influence the world by studying the movies Reeves starred in.",
             "Reeves dreamed of playing hockey for Canada but had to give it up because of an injury.",
-            "Reeves forwent tens of millions of salary for many movies including The Devil’s Advocate, The Replacements, and The Matrix sequels so that the money could be used to cast better actors or fund better special effects.",
+            "Reeves forwent tens of millions of salary for many movies including The Devil's Advocate, The Replacements, and The Matrix sequels so that the money could be used to cast better actors or fund better special effects.",
             "Keanu Reeves remains the highest paid actor in the world with a total income of $156,000,000 for The Matrix Reloaded and The Matrix Revolutions.",
             "There is a conspiracy that believes that Keanu Reeves is immortal. Fans have noted that Keanu looks extremely similar to Paul Mounet, who was a French actor born in 1847, and they claim Keanu never seems to age.",
-            "In response to his sister’s battle with leukemia, Reeves founded a private cancer charity which aids children’s hospitals and provides cancer research. He does not publicly attach his name to his donations.",
+            "In response to his sister's battle with leukemia, Reeves founded a private cancer charity which aids children's hospitals and provides cancer research. He does not publicly attach his name to his donations.",
             "Within five years, Reeves attended four high schools, including the Etobicoke School of the Arts, from which he was expelled.",
             "Reeves excelled more in sports than in academics, as his educational development was challenged by dyslexia.",
             "Keanu Reeves once helped a stranded stranger by driving her 50 miles out of his way.",
