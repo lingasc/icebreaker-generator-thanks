@@ -7,6 +7,9 @@ const resultText = document.getElementById('result-text');
 const loading = document.getElementById('loading');
 const copyBtn = document.getElementById('copy-btn');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
+const pageTitle = document.querySelector('h1');
+const pageSubtitle = document.querySelector('.subtitle');
+const pageFooter = document.querySelector('footer p');
 
 // Check for dark mode preference
 if (localStorage.getItem('darkMode') === 'enabled') {
@@ -62,11 +65,35 @@ function getRandomItems(array, count) {
     return result;
 }
 
+// Update page text based on language
+function updatePageText(language) {
+    if (language === 'english') {
+        pageTitle.textContent = icebreaker_data.en.title;
+        pageSubtitle.textContent = icebreaker_data.en.subtitle;
+        pageFooter.innerHTML = `© 2025 <a href="https://github.com/lingasc">lingasc</a> | ${icebreaker_data.en.footer}`;
+    } else if (language === 'french') {
+        pageTitle.textContent = icebreaker_data.fr.title;
+        pageSubtitle.textContent = icebreaker_data.fr.subtitle;
+        pageFooter.innerHTML = `© 2025 <a href="https://github.com/lingasc">lingasc</a> | ${icebreaker_data.fr.footer}`;
+    } else if (language === 'japanese') {
+        pageTitle.textContent = icebreaker_data.jp.title;
+        pageSubtitle.textContent = icebreaker_data.jp.subtitle;
+        pageFooter.innerHTML = `© 2025 <a href="https://github.com/lingasc">lingasc</a> | ${icebreaker_data.jp.footer}`;
+    } else if (language === 'keanu') {
+        pageTitle.textContent = icebreaker_data.keanu.title;
+        pageSubtitle.textContent = icebreaker_data.keanu.subtitle;
+        pageFooter.innerHTML = `© 2025 <a href="https://github.com/lingasc">lingasc</a> | ${icebreaker_data.keanu.footer}`;
+    }
+}
+
 // English generator
 function generateEnglish() {
     showLoading();
     currentLanguage = 'english';
     copyBtn.style.backgroundColor = '#f47b7b';
+    
+    // Update page text
+    updatePageText(currentLanguage);
     
     // Randomly choose the type of icebreaker
     const type = Math.floor(Math.random() * 3);
@@ -96,6 +123,9 @@ function generateFrench() {
     currentLanguage = 'french';
     copyBtn.style.backgroundColor = '#4acea3';
     
+    // Update page text
+    updatePageText(currentLanguage);
+    
     // Randomly choose the type of icebreaker
     const type = Math.floor(Math.random() * 3);
     
@@ -124,20 +154,23 @@ function generateJapanese() {
     currentLanguage = 'japanese';
     copyBtn.style.backgroundColor = '#ffd15c';
     
+    // Update page text
+    updatePageText(currentLanguage);
+    
     // Randomly choose the type of icebreaker
     const type = Math.floor(Math.random() * 3);
     
     let icebreaker;
     if (type === 0) {
-        // Bad options - using warui instead of bad_jp
+        // Bad options - using warui
         const options = getRandomItems(icebreaker_data.jp.warui, 2);
         icebreaker = `どちらがいいですか？${options[0]}か、それとも${options[1]}か？`;
     } else if (type === 1) {
-        // Good options - using yoi instead of good_jp
+        // Good options - using yoi
         const options = getRandomItems(icebreaker_data.jp.yoi, 2);
         icebreaker = `どちらがいいですか？${options[0]}か、それとも${options[1]}か？`;
     } else {
-        // Open ended - using open instead of open_jp
+        // Open ended - using opun
         const randomIndex = Math.floor(Math.random() * icebreaker_data.jp.opun.length);
         icebreaker = icebreaker_data.jp.opun[randomIndex];
     }
@@ -152,7 +185,10 @@ function generateKeanu() {
     currentLanguage = 'keanu';
     copyBtn.style.backgroundColor = '#2193b0';
     
-    // Using keanu.keanu to choose Keanu facts at random
+    // Update page text
+    updatePageText(currentLanguage);
+    
+    // Using keanu array directly
     const randomIndex = Math.floor(Math.random() * icebreaker_data.keanu.keanu.length);
     const fact = icebreaker_data.keanu.keanu[randomIndex];
     
@@ -174,30 +210,11 @@ function copyToClipboard() {
             // Add a custom attribute to change hover text
             copyBtn.setAttribute('data-copied', 'true');
             
-            // Add CSS for the "Copied!" hover text
-            const style = document.createElement('style');
-            style.textContent = `
-                .copy-btn[data-copied="true"]:hover:before {
-                    content: "Copied!";
-                    position: absolute;
-                    top: -40px;
-                    right: -30px;
-                    background-color: #333;
-                    color: white;
-                    padding: 5px 10px;
-                    border-radius: 3px;
-                    font-size: 12px;
-                    white-space: nowrap;
-                }
-            `;
-            document.head.appendChild(style);
-            
             // Reset after 2 seconds
             setTimeout(() => {
                 copyBtn.textContent = '⎘';
                 copyBtn.style.backgroundColor = originalColor;
                 copyBtn.removeAttribute('data-copied');
-                document.head.removeChild(style);
             }, 2000);
         })
         .catch(err => {
