@@ -14,7 +14,8 @@
             --japanese-color: #ffd15c;
             --keanu-color: #2193b0;
             --light-border: #eee;
-        }
+            --success-color: #388e3c;
+        } 
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -24,7 +25,7 @@
             color: var(--text-color);
             transition: background-color 0.5s ease;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -33,7 +34,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             overflow: hidden;
             position: relative;
-        }
+        } 
         
         .window-frame {
             background-color: #f5f5f5;
@@ -41,12 +42,12 @@
             padding: 10px;
             display: flex;
             align-items: center;
-        }
+        } 
         
         .window-controls {
             display: flex;
             margin-right: 15px;
-        }
+        } 
         
         .control {
             width: 12px;
@@ -54,39 +55,39 @@
             border-radius: 50%;
             margin-right: 8px;
         }
-        
+
         .control.red {
             background-color: #ff5f57;
-        }
+        } 
         
         .control.yellow {
             background-color: #ffbd2e;
-        }
+        } 
         
         .control.green {
             background-color: #28c941;
-        }
+        } 
         
         header {
             text-align: center;
             padding: 30px 20px;
-        }
+        } 
         
         h1 {
             margin: 0;
             font-size: 42px;
             color: var(--text-color);
-        }
+        } 
         
         .subtitle {
             margin-top: 10px;
             color: #666;
             font-size: 18px;
-        }
+        } 
         
         main {
             padding: 20px;
-        }
+        } 
         
         .buttons {
             display: flex;
@@ -95,7 +96,7 @@
             gap: 12px;
             margin-bottom: 30px;
         }
-        
+
         button {
             padding: 12px 24px;
             border: none;
@@ -107,38 +108,38 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-        }
+        } 
         
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+        } 
         
         button img {
             width: 20px;
             height: 20px;
             margin-right: 8px;
-        }
+        } 
         
         #english-btn {
             background-color: var(--secondary-color);
             color: white;
         }
-        
+
         #french-btn {
             background-color: var(--french-color);
             color: white;
-        }
+        } 
         
         #japanese-btn {
             background-color: var(--japanese-color);
             color: black;
-        }
+        } 
         
         #keanu-btn {
             background-color: var(--keanu-color);
             color: white;
-        }
+        } 
         
         .result-container {
             background-color: #f9f9f9;
@@ -153,7 +154,7 @@
             position: relative;
             box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
         }
-        
+
         #result-text {
             font-size: 20px;
             line-height: 1.5;
@@ -161,7 +162,7 @@
             margin: 0;
             font-weight: 500;
             transition: opacity 0.2s ease;
-        }
+        } 
         
         .loading {
             display: none;
@@ -172,12 +173,12 @@
             border-top-color: var(--secondary-color);
             animation: spin 1s ease-in-out infinite;
             position: absolute;
-        }
+        } 
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
+
         .copy-btn {
             position: absolute;
             bottom: -15px;
@@ -195,7 +196,7 @@
             font-size: 18px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-        }
+        } 
         
         .copy-btn:hover:before {
             content: "Copy to clipboard";
@@ -210,10 +211,14 @@
             white-space: nowrap;
         }
         
+        .copy-btn[data-copied="true"]:hover:before {
+            content: "Copied!";
+        }
+
         .copy-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+        } 
         
         footer {
             text-align: center;
@@ -221,16 +226,16 @@
             border-top: 1px solid var(--light-border);
             color: #777;
             font-size: 14px;
-        }
+        } 
         
         a {
             color: #4a6ee0;
             text-decoration: none;
-        }
+        } 
         
         a:hover {
             text-decoration: underline;
-        }
+        } 
         
         .dark-mode-toggle {
             position: absolute;
@@ -244,7 +249,7 @@
             padding: 5px;
             z-index: 10;
         }
-        
+
         .coffee-mug {
             position: fixed;
             bottom: 30px;
@@ -257,7 +262,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: background-color 0.3s ease;
-        }
+        } 
         
         .coffee-handle {
             position: absolute;
@@ -270,7 +275,7 @@
             border-radius: 0 25px 25px 0;
             transition: border-color 0.3s ease;
         }
-        
+
         .coffee-content {
             position: absolute;
             bottom: 0;
@@ -281,7 +286,7 @@
             border-radius: 0 0 50px 50px;
             transition: all 0.3s ease;
             cursor: pointer;
-        }
+        } 
         
         .steam {
             position: absolute;
@@ -290,7 +295,7 @@
             width: 60px;
             height: 60px;
             pointer-events: none;
-        }
+        } 
         
         .steam path {
             fill: rgba(255, 255, 255, 0.8);
@@ -298,18 +303,18 @@
             transform-origin: center bottom;
             opacity: 0;
         }
-        
+
         .steam path:nth-child(1) {
             animation-delay: 0.2s;
-        }
+        } 
         
         .steam path:nth-child(2) {
             animation-delay: 0.8s;
-        }
+        } 
         
         .steam path:nth-child(3) {
             animation-delay: 0.4s;
-        }
+        } 
         
         @keyframes steam {
             0% {
@@ -330,33 +335,33 @@
                 opacity: 0;
             }
         }
-        
+
         /* Dark mode styles */
         body.dark-mode {
             --primary-color: #2d3748;
             --background-color: #1a202c;
             --text-color: #e2e8f0;
             --light-border: #4a5568;
-        }
+        } 
         
         body.dark-mode .window-frame {
             background-color: #2d3748;
-        }
+        } 
         
         body.dark-mode .result-container {
             background-color: #2d3748;
-        }
+        } 
         
         /* Media queries */
         @media (max-width: 600px) {
             .container {
                 margin: 0;
                 border-radius: 0;
-            }
+            } 
             
             .buttons {
                 flex-direction: column;
-            }
+            } 
             
             .coffee-mug {
                 width: 70px;
@@ -364,7 +369,7 @@
                 right: 20px;
                 bottom: 20px;
             }
-            
+
             .coffee-handle {
                 right: -20px;
                 top: 15px;
@@ -383,35 +388,35 @@
                 <div class="control green"></div>
             </div>
             <div>Icebreaker Generator</div>
-        </div>
+        </div> 
         
-        <button class="dark-mode-toggle" id="dark-mode-toggle">☀️</button>
+        <button class="dark-mode-toggle" id="dark-mode-toggle">☀️</button> 
         
         <header>
             <h1>Icebreaker</h1>
             <p class="subtitle">Start a conversation with an icebreaker.</p>
         </header>
-        
+
         <main>
             <div class="buttons">
                 <button id="english-btn" onclick="generateEnglish()">English</button>
                 <button id="french-btn" onclick="generateFrench()">Français</button>
                 <button id="japanese-btn" onclick="generateJapanese()">日本語</button>
                 <button id="keanu-btn" onclick="generateKeanu()">Keanu Mode</button>
-            </div>
+            </div> 
             
             <div class="result-container">
                 <div class="loading" id="loading"></div>
                 <p id="result-text">Click any button above to generate an icebreaker!</p>
                 <button class="copy-btn" id="copy-btn" onclick="copyToClipboard()">⎘</button>
             </div>
-        </main>
+        </main> 
         
         <footer>
             <p>© 2025 <a href="https://github.com/lingasc">lingasc</a> | Start your day with bright conversations</p>
         </footer>
     </div>
-    
+
     <div class="coffee-mug" onclick="changeMugColor()">
         <div class="coffee-handle"></div>
         <div class="coffee-content" ondblclick="changeCoffeeType()"></div>
