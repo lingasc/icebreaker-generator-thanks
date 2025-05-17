@@ -151,8 +151,8 @@ const icebreaker_data = {
             "Tea or coffee?",
             "Which actor would play you in a movie about your life?",
             "What's your spirit animal?",
-            "How many languages can you speak?"
-            "Pineapple on pizza: yum or yuck?"
+            "How many languages can you speak?",
+            "Pineapple on pizza: yum or yuck?",
             "Do you tip based on the subtotal, or the total after tax?",
             "Share your best recipe.",
             "Winter or Summer Olympics?",
