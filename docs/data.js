@@ -1,11 +1,9 @@
-// Comprehensive icebreaker data from breakfast_hour.csv
+// Comprehensive data from breakfast_hour.csv converted into JavaScript
 const icebreaker_data = {
-    // All the English icebreaker options
     en: {
         title: "Icebreaker",
         subtitle: "Start a conversation with an icebreaker.",
         footer: "Start your day with bright conversations",
-        // Options for negative "Would you rather?" questions in English
         bad_options: [
             "jump into a live volcano",
             "jump into a whale's mouth",
@@ -60,7 +58,6 @@ const icebreaker_data = {
             "never forget every unpleasant moment of your life",
             "get flattened by an exceptionally slow steamroller"
         ],
-        // Options for positive "Would you rather?" questions in English
         good_options: [
             "be able to swim like a fish",
             "be able to fly like a bird",
@@ -115,7 +112,6 @@ const icebreaker_data = {
             "bring back the woolly mammoth",
             "build the perfect robot"
         ],
-        // All open-ended icebreaker questions in English
         open_ended: [
             "What's your favorite breakfast food?",
             "What's your favorite lunch food?",
@@ -155,7 +151,7 @@ const icebreaker_data = {
             "Tea or coffee?",
             "Which actor would play you in a movie about your life?",
             "What's your spirit animal?",
-            "How many languages can you speak?", // Fixed missing comma here
+            "How many languages can you speak?", 
             "Pineapple on pizza: yum or yuck?",
             "Do you tip based on the subtotal, or the total after tax?",
             "Share your best recipe.",
@@ -182,10 +178,10 @@ const icebreaker_data = {
     },
     // All French icebreaker components
     fr: {
-        title: "Brise-Glace",
+        title: "Le Brise-Glace",
         subtitle: "Commencez une conversation avec un brise-glace.",
         footer: "Commencez votre journée avec des conversations brillantes",
-        // Options for negative "Would you rather?" questions in French
+        // mauvaises_prefs = bad options
         mauvaises_prefs: [
             "sauter dans un volcan actif",
             "sauter dans la gueule d'une baleine",
@@ -240,7 +236,7 @@ const icebreaker_data = {
             "ne jamais oublier chaque moment désagréable de votre vie",
             "vous faire aplatir par un rouleau compresseur exceptionnellement lent"
         ],
-        // Options for positive "Would you rather?" questions in French
+        // bonnes_prefs = good options
         bonnes_prefs: [
             "être capable de nager comme un poisson",
             "être capable de voler comme un oiseau",
@@ -295,7 +291,7 @@ const icebreaker_data = {
             "ramener le mammouth laineux",
             "construire le robot parfait"
         ],
-        // Open-ended questions in French
+        // ouvertes = open-ended
         ouvertes: [
             "Quel est votre plat de petit-déjeuner préféré ?",
             "Quel est votre plat de déjeuner préféré ?",
@@ -354,7 +350,7 @@ const icebreaker_data = {
             "Est-il mieux d'être craint ou aimé ?",
             "Si les hot-dogs dans des pains sont des sandwiches, un corn dog est-il un wrap ?",
             "Un hot-dog dans un pain est-il un sandwich ?",
-            "Pourquoi s'appelle-t-il un "cinnamon bun" et pas un "cinnamon roll" ?",
+            "Pourquoi s'appelle-t-il un \"cinnamon bun\" et pas un \"cinnamon roll\" ?",
             "Si l'œuf humain est une cellule, alors un œuf de poule est-il une énorme cellule œuf ?",
             "Quel est le dernier livre que vous avez lu ?",
             "Quel est le dernier film que vous avez regardé ?"
@@ -365,7 +361,7 @@ const icebreaker_data = {
         title: "会話術",
         subtitle: "会話を始めるきっかけに使いましょう。",
         footer: "会話で明るい一日を始めましょう",
-        // Warui = "bad" in Japanese, as in bad options
+        // Warui = "bad"
         warui: [
             "生きた火山に飛び込む",
             "クジラの口に飛び込む",
@@ -420,7 +416,7 @@ const icebreaker_data = {
             "人生のすべての不快な瞬間を決して忘れない",
             "非常に遅いローラーで押しつぶされる"
         ],
-        // Yoi = "good", as in good options
+        // yoi = "good"
         yoi: [
             "魚のように泳げる",
             "鳥のように飛べる",
@@ -475,7 +471,7 @@ const icebreaker_data = {
             "マンモスを復活させる",
             "完璧なロボットを作る"
         ],
-        // Opun = "open" (loanword), Open-ended Japanese icebreakers
+        // opun = loanword meaning "open"
         opun: [
             "あなたの好きな朝食は何ですか？",
             "あなたの好きな昼食は何ですか？",
@@ -536,7 +532,7 @@ const icebreaker_data = {
             "あなたが最後に見た映画は何ですか？"
         ]
     },
-    // All Keanu trivia for Keanu Mode
+    // All Keanu Mode components. English only
     keanu: {
         title: "Keanu Mode",
         subtitle: "Learn something amazing about Keanu Reeves.",
@@ -576,17 +572,17 @@ const icebreaker_data = {
             "Keanu Reeves is a vegetarian.",
             "Keanu co-founded a production company called Company Films.",
             "Keanu Reeves has directed a film.",
-            "He starred in a successful theater production of "Hamlet."",
+            "He starred in a successful theater production of \"Hamlet.\"",
             "Reeves has appeared in music videos.",
             "Keanu has a passion for photography.",
             "Keanu Reeves has a star on the Hollywood Walk of Fame.",
             "Keanu Reeves is an advocate for mental health awareness.",
             "Keanu Reeves became the highest paid actor for a single production for reprising his Matrix role in its 2003 sequels Reloaded and Revolutions.",
-            "Reeves' first name "Keanu" means "cool breeze over the mountains" and was derived from the name of his great-great-uncle Keaweaheulu.",
+            "Reeves' first name \"Keanu\" means \"cool breeze over the mountains\" and was derived from the name of his great-great-uncle Keaweaheulu.",
             "Reeves' mother was a showgirl and costume designer, and his father was a drug dealer.",
-            "Reeves was a successful ice hockey goalie which earned him the nickname "The Wall."",
+            "Reeves was a successful ice hockey goalie which earned him the nickname \"The Wall.\"",
             "Keanu Reeves wrote a book of sad poems titled An Ode to Happiness as a joke after a photo of him looking sad and eating a sandwich alone on a bench went viral.",
-            "There is a movement called "Keanu Code" which claims that you can know about the hidden forces that control and influence the world by studying the movies Reeves starred in.",
+            "There is a movement called \"Keanu Code\" which claims that you can know about the hidden forces that control and influence the world by studying the movies Reeves starred in.",
             "Reeves dreamed of playing hockey for Canada but had to give it up because of an injury.",
             "Reeves forwent tens of millions of salary for many movies including The Devil's Advocate, The Replacements, and The Matrix sequels so that the money could be used to cast better actors or fund better special effects.",
             "Keanu Reeves remains the highest paid actor in the world with a total income of $156,000,000 for The Matrix Reloaded and The Matrix Revolutions.",
