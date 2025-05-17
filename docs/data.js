@@ -121,7 +121,7 @@ const icebreaker_data = {
             "What's your favorite color?",
             "What's your favorite book?",
             "What's your favorite movie?",
-            "What's your favorite TV series?"
+            "What's your favorite TV series?",
             "If you could have dinner with any historical figure, who would it be and why?",
             "What's the most interesting place you've ever visited?",
             "If you could instantly become an expert in something, what would it be?",
@@ -170,7 +170,7 @@ const icebreaker_data = {
             "Is it better to be feared or loved?",
             "If hot dogs on buns are sandwiches, is a corn dog a wrap?",
             "Is a hot dog in a bun a sandwich?",
-            "Why is it called a "cinnamon bun" and not a "cinnamon roll"?",
+            "Why is it called a 'cinnamon bun' and not a 'cinnamon roll'?",
             "If the human egg is one cell, then is a chicken egg one giant egg cell?",
             "What is the last book you read?",
             "What's the last movie you watched?"
@@ -297,12 +297,12 @@ const icebreaker_data = {
             "Quelle est votre couleur préférée ?",
             "Quel est votre livre préféré ?",
             "Quel est votre film préféré ?",
-            "Quelle est votre série télévisée préférée ?"
+            "Quelle est votre série télévisée préférée ?",
             "Si vous pouviez dîner avec n'importe quelle figure historique, qui choisiriez-vous et pourquoi ?",
             "Quel est l'endroit le plus intéressant que vous ayez jamais visité ?",
             "Si vous pouviez instantanément devenir expert en quelque chose, que serait-ce ?",
             "Quel est votre livre ou film préféré et pourquoi vous touche-t-il ?",
-            "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous ?"
+            "Si vous pouviez vivre dans n'importe quel monde fictif, lequel choisiriez-vous ?",
             "Quelle est votre couleur préférée ?",
             "Quel est votre livre préféré ?",
             "Quel est votre film préféré ?",
