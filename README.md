@@ -14,7 +14,7 @@ This simple, lightweight MVP was built to provide increased convenience for putt
   
 ## ~~Bonus Features:~~ For Future Deployment: Special Website Interactivity!  
 
-Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, I will launch the full version of the site, complete with:
+Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch the full version of the site, where:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
