@@ -62,7 +62,7 @@ const icebreaker_data = {
             "repeat your worst day for the rest of your life",
             "be overworked",
             "be underpaid",
-            "get consistently passed up for promotions",
+            "be consistently passed up for promotions",
             "be in a mindnumbing job that pays generously",
             "do fulfilling work that costs you money to keep doing it",
             "not be invited to social events",
@@ -189,7 +189,7 @@ const icebreaker_data = {
             "What's the most powerful: air, fire, wind, or earth?",
             "What's the best age to be and why?",
             "If you could travel back in time to any era, which one would it be and why?",
-            "You have the technology to bring one dead historical figure back to life. Who would it be?",
+            "You can bring one dead historical figure back to life. Who would it be?",
             "What's your favorite party game?",
             "What do you want to be most known for?",
             "Is it better to be feared or loved?",
@@ -207,7 +207,6 @@ const icebreaker_data = {
             "What would be your first reaction be if aliens landed on Earth?",
             "If you only had to ask two questions to someone to know them fully, what would be those questions?",
             "Would you rather someone tell you sweet lies or harsh truths?"
-            
         ]
     },
     // All French icebreaker components
