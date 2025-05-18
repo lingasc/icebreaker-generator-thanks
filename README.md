@@ -23,7 +23,7 @@ Here are features I already built that I had to remove to make this site compati
 - Easy one-click icebreaker copy-paste
 - Interface translated into English, French, and Japanese
 
-This static version on GitHub Pages does allow some customizable coffee mug customization and dark mode toggle.
+This static version on GitHub Pages allows for dark mode toggle and limited coffee mug customization.  
   
 ### Best for:  
 Remote team building.  
