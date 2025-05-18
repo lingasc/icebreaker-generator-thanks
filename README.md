@@ -14,7 +14,7 @@ This simple, lightweight MVP was built to provide increased convenience for putt
   
 ## [~~Bonus Features:~~ For Future Deployment:](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/) Special Website Interactivity!  
 
-Here are features I already built that I had to remove to make this site compatible with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch a dynamic version of the site (see preview of WIP [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
+I built features that I had to remove to make this site compatible with GitHub Pages. Once I find cost-free, clean migration and hosting, and time, I may launch a dynamic version (see preview of WIP [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
@@ -43,6 +43,9 @@ Now that you're moving on without your icebreaker person, maybe this can come in
 You might not need icebreakers, but a piece of Keanu trivia a day whiles the long Office Hours away!  
 
 ---
+There's nothing left that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this.
+
+---
 
 ## To Use:  
 1. Keep clicking on any button to cycle through until you find an icebreaker you like.
@@ -56,9 +59,9 @@ Extras:
 ---
 
 # What Problem Does This Solve?  
-No real problem, as far as I can tell. It's just something fun and quick that ties into our experience the past three months. _There is no obligation whatsoever to use this generator!_    
+No real problem, as far as I can tell. It's just something fun that ties into our experience the past three months. _There's no obligation whatsoever to use this generator!_    
   
-However, it might be worth noting that this generator can provide icebreakers faster and cheaper than what's widely available out there. Here's how it compares to two popular, free alternatives when you go through the process of finding one icebreaker, copying, and then pasting it into a chat.  
+However, it might be worth noting that this generator can provide icebreakers faster and cheaper than what's widely available. Here's how it compares to two popular alternatives when you go through the process of finding one icebreaker, copying it, and then pasting it into a chat.  
 
 |                            |This Program|GenAI    |Search Engine|
 |----------------------------|------------|---------|-------------|
@@ -68,7 +71,7 @@ However, it might be worth noting that this generator can provide icebreakers fa
 |Free                        |✓           |✓        |✓            |
 |Fast                        |✓           |✓        |✓            |
 
-## How It Works (In Python):  
+## Under the Hood (In Python):  
   
 The code generates icebreakers at random by putting together a question from phrases sourced from the [breakfast hour dataset](data/breakfast_hour.csv). (By random, I mean in the way computers can simulate randomness.)  
 
@@ -81,7 +84,7 @@ The code can also print French and Japanese translations of the generated questi
 
 It can also generate a random piece of Keanu Reeves trivia instead of a question.  
   
-## How It Works (Website):  
+## Under the Hood (Website):  
 _To make the website work in GitHub Pages, the Python code and CSV dataset were converted into JavaScript. The site uses a version of GitHub Pages' Jekyll theme. The webpage runs completely on HTML, CSS, and JavaScript._  
 _Items with strikethrough are for future deployments, if possible. Preview a WIP [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
 
@@ -95,14 +98,16 @@ _Items with strikethrough are for future deployments, if possible. Preview a WIP
 - Interface translated into English, French, and Japanese depending on the language button clicked.  
   
 ## The Concept  
-The program is based on my experience of our own breakfast hour icebreakers, which seem to fit into two categories:  
-  
-- Questions from which people must choose one out of two provided options.  
-  Example: "Would you rather be able to talk to animals, or know how to play every musical instrument?"
-- Open-ended questions that encourage people to discuss their opinions on a subject.  
-  Example: "What's your favorite pizza topping?"
+The program is based on my experience of our own breakfast hour icebreakers, which seem to fit into two categories.  
 
-For the former question type to be effective, the two options provided must be _both negative_ or _both positive,_ or else the question is not worth contemplating. After all, the following question is pretty easy to answer, isn't it?  
+**Our Breakfast Hour Question Types**  
+
+|            |Two-Option Multiple Choice          |Open-Ended                          |
+|------------|------------------------------------|------------------------------------|
+|Description |Questions from which people must choose one out of two provided options.   |Questions that encourage people to discuss their opinions on a subject.   |
+|Example     |"Would you rather be able to talk to animals, or know how to play every musical instrument?" |"What's your favorite pizza topping?" |  
+  
+For the two-option question type to be effective, the two options provided must be _both negative_ or _both positive,_ or else the question is not worth contemplating. After all, the following question is pretty easy to answer, isn't it?  
 
 > "Would you rather be stung by a murder hornet, or win a million dollars tax free?"  
 
@@ -112,14 +117,14 @@ Here is a picture of a murder hornet to illustrate how horrible they are, compar
   
 Nor should options be neutral. Your audience must be moved emotionally or rationally enough to want to answer the question.  
   
-To this end, the icebreaker program will generate three types of questions:  
+To this end, the icebreaker generator will generate three types of questions.  
   
-- Negative "would you rather" questions  
-  Example: "Would you rather be stranded on a desert island or stuck in an elevator?"  
-- Positive "would you rather" questions  
-  Example: "Would you rather win the Nobel Prize or the lottery?"  
-- Open-ended questions  
-  "Which actor would play you in a movie about your life?"  
+**The Generator's Question Types**  
+
+|            |Two-Option Negative Multiple Choice |Two-Option Positive Multiple Choice |Open-Ended                          |
+|------------|------------------------------------|------------------------------------|------------------------------------|
+|Description |Questions from which people must choose one two **negative** options.   ||Questions from which people must choose one two **positive** options.   |Questions that encourage people to discuss their opinions on a subject.   |
+|Example     |"Would you rather be too hot, or too cold?" |"Would you rather win the Nobel Prize or the lottery?" |"Which actor would play you in a movie about your life?" |  
   
 The type of question will be chosen at random, as will the options if it is a "Would you rather" type of question. All components of the questions are stored in [this breakfast hour dataset](data/breakfast_hour.csv) and converted into JavaScript in [data.js](docs/data.js) for compatibility with GitHub Pages.  
 
@@ -127,7 +132,7 @@ The type of question will be chosen at random, as will the options if it is a "W
 
 ## Limitations  
 
-While this icebreaker generator might be more convenient than generative AI or google, the results you get might be on par. That is, not every icebreaker this generates will be gold, just like what you'd get from genAI or Google.  
+While this icebreaker generator might be more convenient than generative AI or Google, the results you get might be on par. That is, not every icebreaker this generates will be gold, just like what you'd get from genAI or Google.  
 
 The French translations might be better than the Japanese. While I was able to write and proofread in French, using even common syntax and phrasing in my code comments that French software engineers commonly use, I used an online translator to get the Japanese translations and cannot guarantee the same level of acuity there.  
 
@@ -147,7 +152,7 @@ This program could also be useful for:
   
 **Our End Users' Audience Would Be:**  
 
-- Adults (age 18+)
+- Adults of legal employable age
 - Who are proficient in American English, textbook French, or textbook Japanese
 - Who communicate textually
 
