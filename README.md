@@ -43,6 +43,7 @@ Now that you're moving on without your icebreaker person, maybe this can come in
 You might not need icebreakers, but a piece of Keanu trivia a day whiles the long Office Hours away!  
 
 ---
+#### Seriously:  
 There's nothing left that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this.
 
 ---
@@ -100,7 +101,7 @@ _Items with strikethrough are for future deployments, if possible. Preview a WIP
 ## The Concept  
 The program is based on my experience of our own breakfast hour icebreakers, which seem to fit into two categories.  
 
-**Our Breakfast Hour Question Types**  
+#### Our Breakfast Hour Question Types  
 
 |            |Two-Option Multiple Choice          |Open-Ended                          |
 |------------|------------------------------------|------------------------------------|
@@ -119,7 +120,7 @@ Nor should options be neutral. Your audience must be moved emotionally or ration
   
 To this end, the icebreaker generator will generate three types of questions.  
   
-**The Generator's Question Types**  
+#### The Generator's Question Types  
 
 |            |Two-Option Negative Multiple Choice |Two-Option Positive Multiple Choice |Open-Ended                          |
 |------------|------------------------------------|------------------------------------|------------------------------------|
