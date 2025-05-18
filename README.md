@@ -3,18 +3,18 @@
 # [Icebreaker Generator MVP](https://lingasc.github.io/icebreaker-generator-thanks/)   
 ### Surprise!  
   
-To thank you for the past three months, I've taken what I've learned from DSB-210 and written an [icebreaker generator](https://lingasc.github.io/icebreaker-generator-thanks/) capable of generating 5,724 unique, safe-for-work icebreakers, to streamline the task of finding and copying an icebreaker to be pasted into a chat.  
+To thank you for the past three months, I've taken what I've learned from DSB-210 and written an [icebreaker generator](https://lingasc.github.io/icebreaker-generator-thanks/) capable of generating 5,724 unique, safe-for-work icebreakers, to streamline the task of finding and copying an icebreaker to be pasted into a chat. It's hosted on GitHub Pages and is best viewed on desktop.  
 
 ### The Purpose of This Generator:  
-This simple, lightweight MVP was built to provide increased convenience for putting icebreakers into online chats. Plus a little added fun:  
+This simple, lightweight MVP was built to provide increased convenience for putting icebreakers into online chats. Plus a little fun:  
 
 - French translations for Matt
 - Japanese translations for Eric
 - Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours  
   
-## ~~Bonus Features:~~ [For Future Deployment:](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/) Special Website Interactivity!  
+## [~~Bonus Features:~~ For Future Deployment:](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/) Special Website Interactivity!  
 
-Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch the full version of the site (see preview [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
+Here are features I already built that I had to remove to make this site compatible with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch a dynamic version of the site (see preview [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
@@ -23,7 +23,7 @@ Here are features I already built that I had to take out to make this site play 
 - Easy one-click icebreaker copy-paste
 - Interface translated into English, French, and Japanese
 
-This static version does allow some customizable coffee mug customization and dark mode toggle.
+This static version on GitHub Pages does allow some customizable coffee mug customization and dark mode toggle.
   
 ### Best for:  
 Remote team building.  
@@ -127,11 +127,11 @@ The type of question will be chosen at random, as will the options if it is a "W
 
 ## Limitations  
 
-While this icebreaker generator might be more convenient than generative AI or google, the results you get might be on par. That is, not every icebreaker this generates will be gold just like what you'd get from genAI or Google.  
+While this icebreaker generator might be more convenient than generative AI or google, the results you get might be on par. That is, not every icebreaker this generates will be gold, just like what you'd get from genAI or Google.  
 
 The French translations might be better than the Japanese. While I was able to write and proofread in French, using even common syntax and phrasing in my code comments that French software engineers commonly use, I used an online translator to get the Japanese translations and cannot guarantee the same level of acuity there.  
 
-The Keanu facts are true to the best of my knowledge, but I got them from google, so they're about as true as true can mean for the internet.  
+The Keanu facts are true to the best of my knowledge, but I got them from Google, so they're about as true as true can mean for the internet.  
 
 Ultimately, this is an MVP. There's much room for improvement, which I might do if I have time.
 
@@ -165,7 +165,7 @@ This program could also be useful for:
 |[04 Keanu Trivia](code/04_code_kr.ipynb) |The code for Keanu trivia.          |  
 
 
-The following are Python files saved from my notebooks that I didn't use for the GitHub Pages version of the website, but will use for future iterations of the icebreaker generator.  
+The following are Python files saved from my notebooks that I didn't use for the statis version of the website, but will use for future iterations.  
   
 |Python Scripts                        |Description                         |
 |--------------------------------------|------------------------------------|
@@ -199,5 +199,5 @@ This is the directory from where GitHub Pages deploys the webpage.
 |--------------------------------|------------------------------------|
 |[_config.yml](docs/_config.yml) |Lets the site run on a version of GitHub Pages' Jekyll theme.|
 |[data.js](docs/data.js)         |The data in [breakfast_hour.csv](code/breakfast_hour.csv) converted into JavaScript for GitHub Pages.|
-|[index.html](docs/index.html)   |The html file that contains all of the site's markdown and styling.|
-|[main.js](docs/main.js) |Contains all our icebreaker generator code in JavaScript version.          | 
+|[index.html](docs/index.html)   |A standalone html file that contains all of the site's markdown and styling.|
+|[main.js](docs/main.js) |Contains all our icebreaker generator code converted into JavaScript for GitHub Pages.          | 
