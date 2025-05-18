@@ -44,7 +44,7 @@ You might not need icebreakers, but a piece of Keanu trivia a day whiles the lon
 
 ---
 #### Seriously:  
-There's nothing that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this. Hope you like it, and don't hesitate to let me know how anything can be improved.
+There's nothing that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this. _There's absolutely no obligation to use this icebreaker generator._ If you do, I hope you like it, and don't hesitate to let me know how anything can be improved.
 
 ---
 
@@ -125,7 +125,7 @@ To this end, the icebreaker generator will generate three types of questions.
 
 |            |Two-Option Negative Multiple Choice |Two-Option Positive Multiple Choice |Open-Ended                          |
 |------------|------------------------------------|------------------------------------|------------------------------------|
-|Description |Questions from which people must choose one two **negative** options. |Questions from which people must choose one two **positive** options. |Questions that encourage people to discuss their opinions on a subject. |
+|Description |Questions from which people must choose one of two **negative** options. |Questions from which people must choose one of two **positive** options. |Questions that encourage people to discuss their opinions on a subject. |
 |Example     |"Would you rather be too hot, or too cold?" |"Would you rather win the Nobel Prize or the lottery?" |"Which actor would play you in a movie about your life?" |  
   
 The type of question will be chosen at random, as will the options if it is a "Would you rather" type of question. All components of the questions are stored in [this breakfast hour dataset](data/breakfast_hour.csv) and converted into JavaScript in [data.js](docs/data.js) for compatibility with GitHub Pages.  
@@ -134,7 +134,7 @@ The type of question will be chosen at random, as will the options if it is a "W
 
 ## Limitations  
 
-#### Not every icebreaker will be gold
+#### Not every icebreaker will be gold.
 While this icebreaker generator might be more convenient than generative AI or Google, the results you get might be on par.  
 
 #### The French translations might be better than the Japanese.  
