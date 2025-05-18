@@ -37,7 +37,7 @@ Remote team building.
 This was why I'd been asking all those questions about how you make icebreakers!  
   
 #### Matt  
-Now that you're moving on without your icebreaker person, maybe this can come in handy.  
+Now that you're moving on without your icebreaker person, maybe this can come in handy. (*‸*)  
   
 #### Argo  
 You might not need icebreakers, but a piece of Keanu trivia a day whiles the long Office Hours away!  
@@ -127,7 +127,7 @@ The type of question will be chosen at random, as will the options if it is a "W
 
 ## Limitations  
 
-While this icebreaker generator might be more convenient than generative AI or googling icebreakers, the results you get might be on par. That is, not every icebreaker this generates will be gold.  
+While this icebreaker generator might be more convenient than generative AI or google, the results you get might be on par. That is, not every icebreaker this generates will be gold just like what you'd get from genAI or Google.  
 
 The French translations might be better than the Japanese. While I was able to write and proofread in French, using even common syntax and phrasing in my code comments that French software engineers commonly use, I used an online translator to get the Japanese translations and cannot guarantee the same level of acuity there.  
 
@@ -140,18 +140,14 @@ Ultimately, this is an MVP. There's much room for improvement, which I might do 
 Matt, Eric, and Argo, for whom I made this as a teacher appreciation gift.  
 This program could also be useful for:  
 
-- People managers
-- Instructors in American higher education
-  - Who are fluent in American English (I built this in American English with only two other language options)
-  - Who are studying French in Duolingo (like Matt)
-  - Who are re-learning Japanese in Duolingo (for Eric)
+- New Hire/New Student Orientation Leaders
+- Adults learning French, Japanese, or American English
 - Anyone in a position where remote team building is a routine task
   - Where resources are limited (e.g. security risks or no budget for paid agentic AI)
   
 **Our End Users' Audience Would Be:**  
 
 - Adults (age 18+)
-- Working or studying in tech
 - Who are proficient in American English, textbook French, or textbook Japanese
 - Who communicate textually
 
