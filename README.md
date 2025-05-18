@@ -12,7 +12,7 @@ This simple, lightweight MVP was built to provide increased convenience for putt
 - Japanese translations for Eric
 - Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours  
   
-## ~~Bonus Features:~~ [For Future Deployment: Special Website Interactivity!](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)  
+## ~~Bonus Features:~~ [For Future Deployment:](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/) Special Website Interactivity!  
 
 Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch the full version of the site (see preview [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
   
