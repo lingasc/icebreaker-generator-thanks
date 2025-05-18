@@ -12,14 +12,18 @@ This simple, lightweight MVP was built to provide increased convenience for putt
 - Japanese translations for Eric
 - Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours  
   
-## Bonus Features: Special Website Interactivity!  
+## ~~Bonus Features:~~ For Future Deployment: Special Website Interactivity!  
+
+Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, I will launch the full version of the site, complete with:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
 - Customizable coffee mug with animated steam
 - Dark mode toggle
 - Easy one-click icebreaker copy-paste
-- Interface translated into English, French, and Japanese  
+- Interface translated into English, French, and Japanese
+
+This static version does allow some customizable coffee mug customization and dark mode toggle.
   
 ### Best for:  
 Remote team building.  
@@ -74,9 +78,10 @@ The code can also print French and Japanese translations of the generated questi
 It can also generate a random piece of Keanu Reeves trivia instead of a question.  
   
 ## How It Works (Frontend):  
+_Items with strikethrough are for future deployments, if possible._
 
-- Colors change from sunrise to dusk depending on user's local time of day
-- JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day
+- ~~Colors change from sunrise to dusk depending on user's local time of day~~
+- ~~JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day~~
 - Clicking on a button runs the code that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
 - Clicking on coffee cup icon in bottom right screen activates customizable coffee mug feature
 - Clicking on sun icon toggles dark mode
