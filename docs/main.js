@@ -102,11 +102,11 @@ function generateEnglish() {
     if (type === 0) {
         // Bad options
         const options = getRandomItems(icebreaker_data.en.bad_options, 2);
-        icebreaker = `Would you rather ${options[0]} or ${options[1]}?`;
+        icebreaker = `Would you rather ${options[0]}, or ${options[1]}?`;
     } else if (type === 1) {
         // Good options
         const options = getRandomItems(icebreaker_data.en.good_options, 2);
-        icebreaker = `Would you rather ${options[0]} or ${options[1]}?`;
+        icebreaker = `Would you rather ${options[0]}, or ${options[1]}?`;
     } else {
         // Open ended
         const randomIndex = Math.floor(Math.random() * icebreaker_data.en.open_ended.length);
@@ -133,11 +133,11 @@ function generateFrench() {
     if (type === 0) {
         // Mauvaises préférences
         const options = getRandomItems(icebreaker_data.fr.mauvaises_prefs, 2);
-        icebreaker = `Vous préféreriez ${options[0]} ou ${options[1]}?`;
+        icebreaker = `Vous préféreriez ${options[0]}, ou ${options[1]}?`;
     } else if (type === 1) {
         // Bonnes préférences
         const options = getRandomItems(icebreaker_data.fr.bonnes_prefs, 2);
-        icebreaker = `Vous préféreriez ${options[0]} ou ${options[1]}?`;
+        icebreaker = `Vous préféreriez ${options[0]}, ou ${options[1]}?`;
     } else {
         // Questions ouvertes
         const randomIndex = Math.floor(Math.random() * icebreaker_data.fr.ouvertes.length);
