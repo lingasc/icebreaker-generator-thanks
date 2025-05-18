@@ -60,7 +60,7 @@ Extras:
 ---
 
 # What Problem Does This Solve?  
-No real problem, as far as I can tell. It's just something fun that ties into our experience the past three months. _There's no obligation whatsoever to use this generator!_    
+No real problem, as far as I can tell. It's just something fun that ties into our experience the past three months. _I repeat: There's no obligation whatsoever to use this generator!_    
   
 However, it might be worth noting that this generator can provide icebreakers faster and cheaper than what's widely available. Here's how it compares to two popular alternatives when you go through the process of finding one icebreaker, copying it, and then pasting it into a chat.  
 
