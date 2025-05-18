@@ -28,7 +28,7 @@ This static version on GitHub Pages does allow some customizable coffee mug cust
 ### Best for:  
 Remote team building.  
   
-## [Try Out the Icebreaker Generator on GitHub Pages!](https://lingasc.github.io/icebreaker-generator-thanks/)  
+## [Try Out the Icebreaker Generator on GitHub Pages Here!](https://lingasc.github.io/icebreaker-generator-thanks/)  
 ---  
 
 ![](https://cdn.notonthehighstreet.com/system/product_images/images/001/332/036/original_set-of-12-colourful-thank-you-note-cards.jpg)  
