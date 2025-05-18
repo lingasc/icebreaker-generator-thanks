@@ -68,7 +68,7 @@ However, if we're talking about solving a problem of convenience, then this prog
 |Free                        |✓           |✓        |✓            |
 |Fast                        |✓           |✓        |✓            |
 
-## How It Works (Back-End):  
+## How It Works (In Python):  
   
 The code generates icebreakers at random by putting together a question from phrases sourced from the [breakfast hour dataset](data/breakfast_hour.csv). (By random, I mean in the way computers can simulate randomness.)  
 
@@ -81,14 +81,15 @@ The code can also print French and Japanese translations of the generated questi
 
 It can also generate a random piece of Keanu Reeves trivia instead of a question.  
   
-## How It Works (Front-End):  
-_Items with strikethrough are for future deployments, if possible. Preview the full version [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
+## How It Works (Website):  
+_To make the website work in GitHub Pages, the Python code and CSV dataset were converted into JavaScript. The site uses a version of GitHub Pages' Jekyll theme. The webpage can run completely on HTML, CSS, and JavaScript._  
+_Items with strikethrough are for future deployments, if possible. Preview a future version [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
 
 - ~~Colors change from sunrise to dusk depending on user's local time of day~~
 - ~~JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day~~
-- Clicking on a button runs the code that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
 - The data from the csv file was converted to JavaScript, so that when the user clicks on a button, it sources the JavaScript data instead of requiring Python and Pandas to source data.
-- Clicking on coffee cup icon in bottom right screen activates customizable coffee mug feature
+- Clicking on a button runs the JavaScript that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
+- Clicking on the tiny coffee cup icon in the bottom right of the screen activates customizable coffee mug feature
 - Clicking on sun icon toggles dark mode
 - Easy one-click icebreaker copy-paste with clipboard icon
 - Interface translated into English, French, and Japanese depending on the language button clicked  
