@@ -1,0 +1,6 @@
+theme: jekyll-theme-cayman
+title: Icebreaker Generator
+description: Generate conversation starters in multiple languages
+github:
+  is_project_page: true
+  repository_url: https://github.com/lingasc/icebreaker
