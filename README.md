@@ -12,9 +12,9 @@ This simple, lightweight MVP was built to provide increased convenience for putt
 - Japanese translations for Eric
 - Random Keanu Reeves trivia in English, a nod to Argo's Keanu-themed Office Hours  
   
-## ~~Bonus Features:~~ For Future Deployment: Special Website Interactivity!  
+## ~~Bonus Features:~~ [For Future Deployment: Special Website Interactivity!](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)  
 
-Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch the full version of the site, where:
+Here are features I already built that I had to take out to make this site play nice with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch the full version of the site (see preview [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
@@ -48,6 +48,8 @@ You might not need icebreakers, but a piece of Keanu trivia a day whiles the lon
 1. Keep clicking on any button to cycle through until you find an icebreaker you like.
 2. Click on the clipboard button to copy it.
 3. Paste the icebreaker into your chat. Done!
+4. Click on the coffee to change mug colors.
+5. Click on the sun/moon icon to toggle dark mode.
 
 ---
 
@@ -64,7 +66,7 @@ However, if we're talking about solving a problem of convenience, then this prog
 |Free                        |✓           |✓        |✓            |
 |Fast                        |✓           |✓        |✓            |
 
-## How It Works (Backend):  
+## How It Works (Back-End):  
   
 The code generates icebreakers at random by putting together a question from phrases sourced from the [breakfast hour dataset](data/breakfast_hour.csv). (By random, I mean in the way computers can simulate randomness.)  
 
@@ -77,12 +79,13 @@ The code can also print French and Japanese translations of the generated questi
 
 It can also generate a random piece of Keanu Reeves trivia instead of a question.  
   
-## How It Works (Frontend):  
-_Items with strikethrough are for future deployments, if possible._
+## How It Works (Front-End):  
+_Items with strikethrough are for future deployments, if possible. Preview the full version [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
 
 - ~~Colors change from sunrise to dusk depending on user's local time of day~~
 - ~~JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day~~
 - Clicking on a button runs the code that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
+- The data from the csv file was converted to JavaScript, so that when the user clicks on a button, it sources the JavaScript data instead of requiring Python and Pandas to source data.
 - Clicking on coffee cup icon in bottom right screen activates customizable coffee mug feature
 - Clicking on sun icon toggles dark mode
 - Easy one-click icebreaker copy-paste with clipboard icon
@@ -186,4 +189,14 @@ This program could also be useful for:
 |open_ended            |str     |Complete open-ended questions.               |
 |ouvertes              |str     |The English open-ended questions in French.  |
 |open_jp               |str     |The English open-ended questions in Japanese.|
-|keanu_trivia          |str     |Complete sentences of Keanu trivia. English. | 
+|keanu_trivia          |str     |Complete sentences of Keanu trivia. English. |   
+
+## [Docs](docs/)  
+This is the directory from where GitHub Pages deploys the webpage.  
+
+|File                            |Description                         |
+|--------------------------------|------------------------------------|
+|[_config.yml](docs/_config.yml) |Lets the site run on a version of GitHub Pages' Jekyll theme.|
+|[data.js](docs/data.js)         |The data in [breakfast_hour.csv](code/breakfast_hour.csv) converted into JavaScript for GitHub Pages.|
+|[index.html](docs/index.html)   |The html file that contains all of the site's markdown and styling.|
+|[main.js](docs/main.js) |Contains all our icebreaker generator code in JavaScript version.          | 
