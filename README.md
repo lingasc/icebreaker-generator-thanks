@@ -47,9 +47,11 @@ You might not need icebreakers, but a piece of Keanu trivia a day whiles the lon
 ## To Use:  
 1. Keep clicking on any button to cycle through until you find an icebreaker you like.
 2. Click on the clipboard button to copy it.
-3. Paste the icebreaker into your chat. Done!
-4. Click on the coffee to change mug colors.
-5. Click on the sun/moon icon to toggle dark mode.
+3. Paste the icebreaker into your chat. Done!  
+
+Extras:
+- Click on the coffee to change mug colors.
+- Click on the sun/moon icon to toggle dark mode.
 
 ---
 
