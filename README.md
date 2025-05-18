@@ -37,7 +37,7 @@ Remote team building.
 This was why I'd been asking all those questions about how you make icebreakers!  
   
 #### Matt  
-Now that you're moving on without your icebreaker person, maybe this can come in handy. (*‸*)  
+Now that you're moving on without your icebreaker person, maybe this can come in handy. 🥲    
   
 #### Argo  
 You might not need icebreakers, but a piece of Keanu trivia a day whiles the long Office Hours away!  
@@ -165,6 +165,8 @@ This program could also be useful for:
 |[04 Keanu Trivia](code/04_code_kr.ipynb) |The code for Keanu trivia.          |  
 
 
+The following are Python files saved from my notebooks that I didn't use for the GitHub Pages version of the website, but will use for future iterations of the icebreaker generator.  
+  
 |Python Scripts                        |Description                         |
 |--------------------------------------|------------------------------------|
 |[English](code/icebreaker_en.py)      |This runs the English icebreaker generator.                   |
