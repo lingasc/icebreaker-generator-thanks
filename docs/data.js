@@ -59,7 +59,7 @@ const icebreaker_data = {
             "get flattened by an exceptionally slow steamroller",
             "look like a giant toe",
             "look like a funhouse mirror reflection",
-            "repeat the same day for the rest of your life",
+            "repeat your worst day for the rest of your life",
             "be overworked",
             "be underpaid",
             "get consistently passed up for promotions",
@@ -68,7 +68,7 @@ const icebreaker_data = {
             "not be invited to social events",
             "wrestle a hungry saltwater crocodile", 
             "jump out of a plane with a faulty parachute",
-            'have a coworker who takes all the credit for your work"
+            "have a coworker who takes all the credit for your work"
         ],
         good_options: [
             "be able to swim like a fish",
