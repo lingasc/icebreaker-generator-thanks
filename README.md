@@ -14,7 +14,7 @@ This simple, lightweight MVP was built to provide increased convenience for putt
   
 ## [~~Bonus Features:~~ For Future Deployment:](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/) Special Website Interactivity!  
 
-Here are features I already built that I had to remove to make this site compatible with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch a dynamic version of the site (see preview [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
+Here are features I already built that I had to remove to make this site compatible with GitHub Pages. Once I figure out a cost-free, clean migration and hosting of dynamic webpages, and time, I may launch a dynamic version of the site (see preview of WIP [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)), where:
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
@@ -58,7 +58,7 @@ Extras:
 # What Problem Does This Solve?  
 No real problem, as far as I can tell. It's just something fun and quick that ties into our experience the past three months. _There is no obligation whatsoever to use this generator!_    
   
-However, if we're talking about solving a problem of convenience, then this program can provide icebreakers faster and cheaper than what's widely available out there. Here's how it compares to two popular, free alternatives when you go through the process of finding one icebreaker, copying, and pasting it into a chat.  
+However, it might be worth noting that this generator can provide icebreakers faster and cheaper than what's widely available out there. Here's how it compares to two popular, free alternatives when you go through the process of finding one icebreaker, copying, and then pasting it into a chat.  
 
 |                            |This Program|GenAI    |Search Engine|
 |----------------------------|------------|---------|-------------|
@@ -82,17 +82,17 @@ The code can also print French and Japanese translations of the generated questi
 It can also generate a random piece of Keanu Reeves trivia instead of a question.  
   
 ## How It Works (Website):  
-_To make the website work in GitHub Pages, the Python code and CSV dataset were converted into JavaScript. The site uses a version of GitHub Pages' Jekyll theme. The webpage can run completely on HTML, CSS, and JavaScript._  
-_Items with strikethrough are for future deployments, if possible. Preview a future version [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
+_To make the website work in GitHub Pages, the Python code and CSV dataset were converted into JavaScript. The site uses a version of GitHub Pages' Jekyll theme. The webpage runs completely on HTML, CSS, and JavaScript._  
+_Items with strikethrough are for future deployments, if possible. Preview a WIP [here](https://d902920a-af24-4e86-98e7-61d70dd3511e.spock.prod.repl.run/)._
 
 - ~~Colors change from sunrise to dusk depending on user's local time of day~~
 - ~~JavaScript time dependency code changes greeting from "Good morning!", "Good afternoon!", to "Good evening!" depending on user's local time of day~~
 - The data from the csv file was converted to JavaScript, so that when the user clicks on a button, it sources the JavaScript data instead of requiring Python and Pandas to source data.
 - Clicking on a button runs the JavaScript that generates icebreakers in the language you selected. Keep clicking to shuffle through icebreakers.
-- Clicking on the tiny coffee cup icon in the bottom right of the screen activates customizable coffee mug feature
-- Clicking on sun icon toggles dark mode
-- Easy one-click icebreaker copy-paste with clipboard icon
-- Interface translated into English, French, and Japanese depending on the language button clicked  
+- Clicking on the tiny coffee cup icon in the bottom right of the screen activates customizable coffee mug feature.
+- Clicking on sun icon toggles dark mode.
+- Easy one-click icebreaker copy-paste with clipboard icon.
+- Interface translated into English, French, and Japanese depending on the language button clicked.  
   
 ## The Concept  
 The program is based on my experience of our own breakfast hour icebreakers, which seem to fit into two categories:  
@@ -121,7 +121,7 @@ To this end, the icebreaker program will generate three types of questions:
 - Open-ended questions  
   "Which actor would play you in a movie about your life?"  
   
-The type of question will be chosen at random, as will the options if it is a "Would you rather" type of question. All components of the questions are stored in [this breakfast hour dataset](data/breakfast_hour.csv).  
+The type of question will be chosen at random, as will the options if it is a "Would you rather" type of question. All components of the questions are stored in [this breakfast hour dataset](data/breakfast_hour.csv) and converted into JavaScript in [data.js](docs/data.js) for compatibility with GitHub Pages.  
 
 ---
 
@@ -165,7 +165,7 @@ This program could also be useful for:
 |[04 Keanu Trivia](code/04_code_kr.ipynb) |The code for Keanu trivia.          |  
 
 
-The following are Python files saved from my notebooks that I didn't use for the statis version of the website, but will use for future iterations.  
+The following are Python files saved from my notebooks that I didn't use for the static version of the website, but will use for future iterations.  
   
 |Python Scripts                        |Description                         |
 |--------------------------------------|------------------------------------|
