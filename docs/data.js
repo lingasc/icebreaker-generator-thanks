@@ -536,7 +536,7 @@ const icebreaker_data = {
     keanu: {
         title: "Keanu Mode",
         subtitle: "Learn something amazing about Keanu Reeves.",
-        footer: "Keanu Reeves gives up his seat to pregnant women on the subway!",
+        footer: "I met Keanu Reeves and Al Pacino during the filming of 'Devil's Advocate.'",
         keanu: [
             "Despite—or perhaps because of—his multicultural background, Keanu Reeves has never become an American citizen.",
             "Hockey kept Keanu busy as a kid.",
