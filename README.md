@@ -18,7 +18,7 @@ I built features that I had to remove to make this site compatible with GitHub P
   
 - Colors change from sunrise to dusk depending on user's local time of day
 - Greetings subheading changes depending on your local time of day
-- Customizable coffee mug with animated steam
+- Customizable coffee mug with animated steam. Change mug color _and_ type of coffee! Choose from black, espresso, latte, and cappuccino.
 - Dark mode toggle
 - Easy one-click icebreaker copy-paste
 - Interface translated into English, French, and Japanese
