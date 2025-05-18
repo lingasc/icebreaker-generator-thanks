@@ -44,7 +44,7 @@ You might not need icebreakers, but a piece of Keanu trivia a day whiles the lon
 
 ---
 #### Seriously:  
-There's nothing left that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this.
+There's nothing that I haven't already said, yet words haven't conveyed my gratitude for all your guidance and patience, for pushing me to continue and challenge myself, and the empowerment I've gained from it. My thought is that I might do a better job expressing my gratitude by using what you've taught me to make you this. Hope you like it, and don't hesitate to let me know how anything can be improved.
 
 ---
 
@@ -107,14 +107,15 @@ The program is based on my experience of our own breakfast hour icebreakers, whi
 |------------|------------------------------------|------------------------------------|
 |Description |Questions from which people must choose one out of two provided options.   |Questions that encourage people to discuss their opinions on a subject.   |
 |Example     |"Would you rather be able to talk to animals, or know how to play every musical instrument?" |"What's your favorite pizza topping?" |  
+
   
 For the two-option question type to be effective, the two options provided must be _both negative_ or _both positive,_ or else the question is not worth contemplating. After all, the following question is pretty easy to answer, isn't it?  
-
-> "Would you rather be stung by a murder hornet, or win a million dollars tax free?"  
-
-Here is a picture of a murder hornet to illustrate how horrible they are, compared to a hornet common in D.C.  
   
-![](https://media.nbcwashington.com/2019/09/murder-hornets-01.jpg?fit=1024%2C576)
+> "Would you rather be stung by a murder hornet, or win a million dollars tax free?"  
+  
+Here is a picture of a murder hornet to illustrate how horrible they are.  
+  
+![](https://media.nbcwashington.com/2019/09/murder-hornets-01.jpg?fit=1024%2C576)  
   
 Nor should options be neutral. Your audience must be moved emotionally or rationally enough to want to answer the question.  
   
@@ -124,7 +125,7 @@ To this end, the icebreaker generator will generate three types of questions.
 
 |            |Two-Option Negative Multiple Choice |Two-Option Positive Multiple Choice |Open-Ended                          |
 |------------|------------------------------------|------------------------------------|------------------------------------|
-|Description |Questions from which people must choose one two **negative** options.   ||Questions from which people must choose one two **positive** options.   |Questions that encourage people to discuss their opinions on a subject.   |
+|Description |Questions from which people must choose one two **negative** options. |Questions from which people must choose one two **positive** options. |Questions that encourage people to discuss their opinions on a subject. |
 |Example     |"Would you rather be too hot, or too cold?" |"Would you rather win the Nobel Prize or the lottery?" |"Which actor would play you in a movie about your life?" |  
   
 The type of question will be chosen at random, as will the options if it is a "Would you rather" type of question. All components of the questions are stored in [this breakfast hour dataset](data/breakfast_hour.csv) and converted into JavaScript in [data.js](docs/data.js) for compatibility with GitHub Pages.  
@@ -133,16 +134,21 @@ The type of question will be chosen at random, as will the options if it is a "W
 
 ## Limitations  
 
-While this icebreaker generator might be more convenient than generative AI or Google, the results you get might be on par. That is, not every icebreaker this generates will be gold, just like what you'd get from genAI or Google.  
+#### Not every icebreaker will be gold
+While this icebreaker generator might be more convenient than generative AI or Google, the results you get might be on par.  
 
-The French translations might be better than the Japanese. While I was able to write and proofread in French, using even common syntax and phrasing in my code comments that French software engineers commonly use, I used an online translator to get the Japanese translations and cannot guarantee the same level of acuity there.  
+#### The French translations might be better than the Japanese.  
+While I was able to write and proofread in French, using even common syntax and phrasing in my code comments that French software engineers commonly use, I used an online translator to get the Japanese translations and cannot guarantee the same level of acuity there.  
 
-The Keanu facts are true to the best of my knowledge, but I got them from Google, so they're about as true as true can mean for the internet.  
+#### The Keanu facts are true*  
+*To the best of my knowledge, but I got them from Google, so they're about as true as true can mean for the internet.  
 
-Ultimately, this is an MVP. There's much room for improvement, which I might do if I have time.
+#### Ultimately, this is an MVP.  
+There's much room for improvement, which I might do if I have time.  
 
+---
 # Our Audience  
-**End Users:**  
+#### End Users    
 Matt, Eric, and Argo, for whom I made this as a teacher appreciation gift.  
 This program could also be useful for:  
 
@@ -151,8 +157,7 @@ This program could also be useful for:
 - Anyone in a position where remote team building is a routine task
   - Where resources are limited (e.g. security risks or no budget for paid agentic AI)
   
-**Our End Users' Audience Would Be:**  
-
+#### Our End Users' Audience  
 - Adults of legal employable age
 - Who are proficient in American English, textbook French, or textbook Japanese
 - Who communicate textually
